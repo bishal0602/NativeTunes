@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { View, FlatList } from 'react-native';
-import Post from './post';
+import Post from '../../components/marketplace_post';
 import { Product, fetchProducts } from './AppService';
 
-
-import { StyleSheet } from 'react-native';
-import { EvilIcons } from '@expo/vector-icons'; 
 
 
 export default function MarketplaceScreen() {
@@ -26,7 +23,7 @@ export default function MarketplaceScreen() {
   return (
     <View>
     <FlatList
-      data={dataReceived}
+      data={products}
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => <Post data={item} />}
     />
