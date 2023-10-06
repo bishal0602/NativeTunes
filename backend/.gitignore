@@ -8,8 +8,8 @@
 **/Migrations/
 
 # Configs
-app.Development.json
-app.Production.json
+appsettings.Development.json
+appsettings.Production.json
 
 # User-specific files
 *.rsuser
