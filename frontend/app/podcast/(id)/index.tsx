@@ -31,7 +31,7 @@ export default function PodcastPage() {
 
       <View style={styles.music_logo_view}>
         <Image
-          source={require("../../assets/logo.jpg")}
+          source={require("../../../assets/logo.jpg")}
           style={styles.image_view}
         />
       </View>
@@ -94,7 +94,7 @@ export default function PodcastPage() {
         <Text style={styles.recently_played_text}> Recently Played </Text>
         <View style={styles.recently_played_list}>
           <Image
-            source={require("../../assets/logo.jpg")}
+            source={require("../../../assets/logo.jpg")}
             style={styles.recently_played_image}
           />
           <View style={styles.recently_played_list_text}>

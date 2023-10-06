@@ -1,6 +1,6 @@
 // import { Image } from "expo-image";
 import React, { ReactNode, useState } from "react";
-import { View, TextInput, StyleSheet, Pressable, Text } from "react-native";
+import { View, TextInput, StyleSheet, Pressable, Text, SafeAreaView } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { warmUpAsync } from "expo-web-browser";
@@ -13,7 +13,7 @@ import {
 
 const JWT_URL = "/api/login/google"
 
-export default function Sign() {
+export default function SignUp() {
   // const [password, setPassword] = useState('');
 
   // const [showPassword, setShowPassword] = useState(false);
@@ -58,7 +58,7 @@ export default function Sign() {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <InputField place_holder="Username" secure={false} />
       <InputField place_holder="Email Address" secure={false} />
       <View>
@@ -104,7 +104,7 @@ export default function Sign() {
           Continue with Google
         </Text>
       </Pressable>
-    </View>
+    </SafeAreaView>
   );
 }
 interface InputFieldProps {

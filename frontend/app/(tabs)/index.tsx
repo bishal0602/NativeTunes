@@ -11,7 +11,7 @@ import RecentlyPlayed  from '../../components/RecentlyPlayed';
 import { ScrollView } from 'react-native-gesture-handler';
 import recentlyplayedData from '../../assets/data/recentlyplayed';
 import PopularData from '../../components/PopularData';
-import popularData from '../../assets/data/populardata';
+import popularData from '../../assets/data/popularData';
 
 export default function TabOneScreen() {
   const image1Source=require('../../assets/images/kumari.png');
@@ -35,11 +35,6 @@ export default function TabOneScreen() {
    
   );
 }
-
-
-
-
-
 
 
 
