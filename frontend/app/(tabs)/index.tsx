@@ -5,24 +5,30 @@ import playedData from "../../assets/data/played";
 
 // import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
-import Welcome from '../../components/welcomeback';
+import Welcome from '../../components/Welcome';
 import { MainScreenPlayer } from '../../components/MainScreenPlayer';
+import { RecentlyPlayed } from '../../components/RecentlyPlayed';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export default function TabOneScreen() {
-  const imageSource=require('../../assets/images/kumari.png');
+  const image1Source=require('../../assets/images/kumari.png');
+  const image2Source=require('../../assets/images/ind2.jpg');
   return (
-    <View style={styles.container}>
+    <ScrollView>
+       <View style={styles.container}>
       {/* blocktitle */}
      <Welcome/>
 
 
       {/* played image */}
       
-      <MainScreenPlayer title='art' albumArt={imageSource} time='30'></MainScreenPlayer>
-
+      <MainScreenPlayer title='Life As A Newar' albumArt={image1Source} time='15 mins of listening'></MainScreenPlayer>
+      <RecentlyPlayed title='How to win in life Podcast Episode 4(Newari)' albumArt={image2Source} time='15 mins of listening'></RecentlyPlayed>
 
 
     </View>
+    </ScrollView>
+   
   );
 }
 
