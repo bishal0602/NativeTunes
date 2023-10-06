@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
 
     },
     main:{
-        wordWrap: 'break-word',
+        // wordWrap: 'break-word',
     },
     sub:{},
     time:{
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
       },
     imgtime:{
         color:'#F5F5F5',
-        font:10,
+        // font:10,
         opacity:0.7,
     },
     

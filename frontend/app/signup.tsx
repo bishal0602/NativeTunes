@@ -5,6 +5,13 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { warmUpAsync } from "expo-web-browser";
 import Font from "../constants/Font";
+import {
+  GoogleSignin,
+  statusCodes,
+} from "@react-native-google-signin/google-signin";
+
+
+const JWT_URL = "/api/login/google"
 
 export default function Sign() {
   // const [password, setPassword] = useState('');
@@ -15,11 +22,39 @@ export default function Sign() {
   //     setShowPassword(!showPassword);
   // };
 
+  const [userInfo, setUserInfo] = useState({});
+
   function handleSignUp() {
     const vaa = 0;
   }
-  function handleLogIn() {
-    const vaa = 1;
+  async function sendToBackend({ id_token } : {id_token: string}) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", JWT_URL);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onload = function () {
+      console.log("Signed in as: " + xhr.responseText);
+    };
+    xhr.send("idtoken=" + id_token);
+  }
+  async function handleSignInWIthGoogle() {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+      setUserInfo(userInfo);
+      var id_token = userInfo.idToken as string;
+      sendToBackend({id_token});
+    } catch (error) {
+      console.log(error)
+      // if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+      //   // user cancelled the login flow
+      // } else if (error!.code === statusCodes.IN_PROGRESS) {
+      //   // operation (e.g. sign in) is in progress already
+      // } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+      //   // play services not available or outdated
+      // } else {
+      //   // some other error happened
+      // }
+    }
   }
 
   return (
@@ -36,11 +71,21 @@ export default function Sign() {
                     onPress={toggleShowPassword} 
             />  */}
       </View>
-      <Pressable style={styles.button} onPress={()=>{handleSignUp();}}>
+      <Pressable
+        style={styles.button}
+        onPress={() => {
+          handleSignUp();
+        }}
+      >
         <Text>Sign Up</Text>
       </Pressable>
       <Text numberOfLines={1} />
-      <Pressable style={styles.signInButton} onPress={()=>{handleLogIn();}}>
+      <Pressable
+        style={styles.signInButton}
+        onPress={() => {
+          handleSignInWIthGoogle();
+        }}
+      >
         {/* <Image width={20} height={20} href={googleIcon}/> */}
 
         <AntDesign
