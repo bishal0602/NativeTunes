@@ -48,21 +48,21 @@ export default function TabLayout() {
         name="library"
         options={{
           title: "Library",
-          tabBarIcon: ({ color }) => <TabBarIcon name="book" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="file" color={color} />,
         }}
       />
       <Tabs.Screen
         name="marketplace"
         options={{
           title: "Marketplace",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="shopping-cart" color={color} />,
         }}
       />
       <Tabs.Screen
         name="forum"
         options={{
           title: "Forum",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="comment" color={color} />,
         }}
       />
     </Tabs>
