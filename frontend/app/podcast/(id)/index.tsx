@@ -9,6 +9,11 @@ import {
   Dimensions,
 } from "react-native";
 
+import { useEffect, useState } from "react";
+
+import { useLocalSearchParams } from "expo-router";
+import { Podcast, fetchPodcastbyId } from "../../(tabs)/AppService";
+
 const Dev_Height = Dimensions.get("window").height;
 const Dev_Width = Dimensions.get("window").width;
 
@@ -17,6 +22,21 @@ import Slider from "@react-native-community/slider";
 import ProgressCircle from "react-native-progress-circle";
 
 export default function PodcastPage() {
+  const { id } = useLocalSearchParams();
+
+  const [podcast, setPodcast] = useState<Podcast>();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const podcast = await fetchPodcastbyId({id: id as string});
+        setPodcast(podcast);
+      } catch (error) {
+        console.error('Error fetching data:', error)
+      }
+    };
+    fetchData();
+  });
   return (
     <SafeAreaView style={styles.contanier}>
       <View style={styles.mainbar}>
@@ -37,9 +57,9 @@ export default function PodcastPage() {
       </View>
 
       <View style={styles.name_of_song_View}>
-        <Text style={styles.name_of_song_Text1}>#02 - Practice</Text>
+        <Text style={styles.name_of_song_Text1}>{podcast.title}</Text>
         <Text style={styles.name_of_song_Text2}>
-          Digital Marketing - By Setup Cast
+        {podcast.description}
         </Text>
       </View>
 
