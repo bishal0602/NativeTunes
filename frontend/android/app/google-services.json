@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "166192588874",
+    "project_id": "nativetunes-ceb46",
+    "storage_bucket": "nativetunes-ceb46.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:166192588874:android:ed92fce37cab5263785eb3",
+        "android_client_info": {
+          "package_name": "com.krishtimil.nativetunes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "166192588874-lsn4v5o7ojhtml519r1qr3q2j5vhdq15.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_hGWnPtIt__zmX2a6EOwsbdRM1872I44"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "166192588874-lsn4v5o7ojhtml519r1qr3q2j5vhdq15.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
