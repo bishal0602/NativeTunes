@@ -32,21 +32,20 @@ const styles = StyleSheet.create({
     titleblock: {
       justifyContent: 'space-between',
       marginTop:30,
-      paddingHorizontal: 20,
+      paddingHorizontal: 15,
       flexDirection: 'row',
-      paddingBottom: 20,
+      paddingBottom: 10,
     },
     texttitle :{},
     titlemain :{
-    //   paddingHorizontal: 20,
       fontSize:24,
       fontWeight: '600',
       color: "#FFFFFF"
     },
     titlesec:{
-      paddingHorizontal: 20,
-      paddingTop: 10,
-      fontSize:14,
+    //   paddingHorizontal: 20,
+    //   paddingTop: 10,
+      fontSize:16,
       color :"#585858",
     },
     searchbtn:{

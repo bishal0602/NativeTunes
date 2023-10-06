@@ -27,8 +27,9 @@ export function MainScreenPlayer({albumArt, title, time}: {albumArt: ImageSource
 
 const styles = StyleSheet.create({ 
     mainScreencontainer:{
-        width: '100%',
         height: 200,
+        margin:10,
+
 
     },
     backgroundImage: {
