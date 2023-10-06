@@ -1,6 +1,13 @@
 // import { Image } from "expo-image";
 import React, { ReactNode, useState } from "react";
-import { View, TextInput, StyleSheet, Pressable, Text, SafeAreaView } from "react-native";
+import {
+  View,
+  TextInput,
+  StyleSheet,
+  Pressable,
+  Text,
+  SafeAreaView,
+} from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { warmUpAsync } from "expo-web-browser";
@@ -10,8 +17,7 @@ import {
   statusCodes,
 } from "@react-native-google-signin/google-signin";
 
-
-const JWT_URL = "/api/login/google"
+const JWT_URL = "/api/login/google";
 
 export default function SignUp() {
   // const [password, setPassword] = useState('');
@@ -27,7 +33,7 @@ export default function SignUp() {
   function handleSignUp() {
     const vaa = 0;
   }
-  async function sendToBackend({ id_token } : {id_token: string}) {
+  async function sendToBackend({ id_token }: { id_token: string }) {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", JWT_URL);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -42,9 +48,9 @@ export default function SignUp() {
       const userInfo = await GoogleSignin.signIn();
       setUserInfo(userInfo);
       var id_token = userInfo.idToken as string;
-      sendToBackend({id_token});
+      sendToBackend({ id_token });
     } catch (error) {
-      console.log(error)
+      console.log(error);
       // if (error.code === statusCodes.SIGN_IN_CANCELLED) {
       //   // user cancelled the login flow
       // } else if (error!.code === statusCodes.IN_PROGRESS) {

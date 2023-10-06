@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import { Audio } from 'expo-av';
+import React, { useState, useEffect } from "react";
+import { View, Text, TouchableOpacity } from "react-native";
+import { Audio } from "expo-av";
 
 const AudioRecorder = () => {
   const [recording, setRecording] = useState(null);
@@ -16,12 +16,14 @@ const AudioRecorder = () => {
   const startRecording = async () => {
     try {
       const recordingObject = new Audio.Recording();
-      await recordingObject.prepareToRecordAsync(Audio.RECORDING_OPTIONS_PRESET_HIGH_QUALITY);
+      await recordingObject.prepareToRecordAsync(
+        Audio.RECORDING_OPTIONS_PRESET_HIGH_QUALITY
+      );
       await recordingObject.startAsync();
       setRecording(recordingObject);
       setIsRecording(true);
     } catch (error) {
-      console.error('Error starting recording:', error);
+      console.error("Error starting recording:", error);
     }
   };
 
@@ -30,14 +32,14 @@ const AudioRecorder = () => {
       await recording.stopAndUnloadAsync();
       setIsRecording(false);
     } catch (error) {
-      console.error('Error stopping recording:', error);
+      console.error("Error stopping recording:", error);
     }
   };
 
   return (
     <View>
       <TouchableOpacity onPress={isRecording ? stopRecording : startRecording}>
-        <Text>{isRecording ? 'Stop Recording' : 'Start Recording'}</Text>
+        <Text>{isRecording ? "Stop Recording" : "Start Recording"}</Text>
       </TouchableOpacity>
     </View>
   );

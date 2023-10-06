@@ -29,10 +29,10 @@ export default function PodcastPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const podcast = await fetchPodcastbyId({id: id as string});
+        const podcast = await fetchPodcastbyId({ id: id as string });
         setPodcast(podcast);
       } catch (error) {
-        console.error('Error fetching data:', error)
+        console.error("Error fetching data:", error);
       }
     };
     fetchData();
@@ -58,9 +58,7 @@ export default function PodcastPage() {
 
       <View style={styles.name_of_song_View}>
         <Text style={styles.name_of_song_Text1}>{podcast.title}</Text>
-        <Text style={styles.name_of_song_Text2}>
-        {podcast.description}
-        </Text>
+        <Text style={styles.name_of_song_Text2}>{podcast.description}</Text>
       </View>
 
       <View style={styles.slider_view}>

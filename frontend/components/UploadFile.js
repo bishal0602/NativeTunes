@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import * as DocumentPicker from 'expo-document-picker';
-import axios from 'axios';
+import React, { useState } from "react";
+import { View, Text, TouchableOpacity } from "react-native";
+import * as DocumentPicker from "expo-document-picker";
+import axios from "axios";
 
 const UploadFile = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -9,11 +9,11 @@ const UploadFile = () => {
   const pickDocument = async () => {
     try {
       const result = await DocumentPicker.getDocumentAsync();
-      if (result.type === 'success') {
+      if (result.type === "success") {
         setSelectedFile(result);
       }
     } catch (error) {
-      console.error('Error picking document:', error);
+      console.error("Error picking document:", error);
     }
   };
 

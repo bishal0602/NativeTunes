@@ -37,7 +37,11 @@ export const fetchProducts = async (): Promise<Product[]> => {
   }
 };
 
-export const fetchPodcastbyId = async ({id} : {id:string}): Promise<Podcast> => {
+export const fetchPodcastbyId = async ({
+  id,
+}: {
+  id: string;
+}): Promise<Podcast> => {
   try {
     const response = await axios.get(`$(BASE_URL)/podcast/{id}`);
     return response.data as Podcast;
