@@ -5,7 +5,7 @@ import playedData from "../../assets/data/played";
 
 // import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
-import Welcome from '../../components/welcomeback';
+import Welcome from '../../components/Welcome';
 import { MainScreenPlayer } from '../../components/MainScreenPlayer';
 import { RecentlyPlayed } from '../../components/RecentlyPlayed';
 import { ScrollView } from 'react-native-gesture-handler';
