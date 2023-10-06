@@ -1,31 +1,25 @@
 import { StyleSheet } from 'react-native';
+import { EvilIcons } from '@expo/vector-icons'; 
 
-import EditScreenInfo from '../../components/EditScreenInfo';
+
+// import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
+import Welcome from '../../components/welcomeback';
+
 
 export default function MarketplaceScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Marketplace</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/marketplace.tsx" />
+      <Welcome/>
+
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#111111",
+    alignContent: 'center',
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-});
+})

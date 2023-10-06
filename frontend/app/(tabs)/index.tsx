@@ -5,25 +5,18 @@ import playedData from "../../assets/data/played";
 
 // import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
+import Welcome from '../../components/welcomeback';
 
 export default function TabOneScreen() {
   return (
     <View style={styles.container}>
       {/* blocktitle */}
-      <View style={styles.titleblock}>
-        {/* tile */}
-        <View style={styles.texttitle}>
-          <Text style={styles.titlemain}>Welcome Back!</Text>
-          <Text style ={styles.titlesec}> Find today's best podcasts</Text>
-        </View>
-        {/* search button */}
-        <View style={styles.searchbtn}>
-        <EvilIcons name="search" size={24} color="white"  />
-        </View>
-      </View>
+     <Welcome/>
+
+
       {/* played image */}
-      <View style={styles.played}>
-      </View>
+      {/* <View style={styles.played}> */}
+      {/* </View> */}
 
 
 
