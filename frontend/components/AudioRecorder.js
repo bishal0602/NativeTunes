@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import {  TouchableOpacity } from "react-native";
+import { Text, View } from "./Themed";
 import { Audio } from "expo-av";
 
 const AudioRecorder = () => {

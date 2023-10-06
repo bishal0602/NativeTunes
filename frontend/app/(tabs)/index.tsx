@@ -40,7 +40,7 @@ export default function TabOneScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#111111",
+    backgroundColor: "#000",
     alignContent: "center",
   },
   titleblock: {

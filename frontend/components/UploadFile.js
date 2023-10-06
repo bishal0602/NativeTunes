@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import {TouchableOpacity } from "react-native";
+import { Text, View } from "./Themed";
 import * as DocumentPicker from "expo-document-picker";
 import axios from "axios";
 
