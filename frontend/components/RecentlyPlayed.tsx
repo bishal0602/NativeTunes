@@ -2,7 +2,6 @@ import { StyleSheet, Image, ImageBackground, FlatList } from "react-native";
 import { Text, View } from "./Themed";
 import { ImageSourcePropType } from "react-native";
 import { EvilIcons } from "@expo/vector-icons";
-import recentlyplayedData from "../assets/data/recentlyplayed";
 
 export default function RecentlyPlayed({
   recentlyplayedData,

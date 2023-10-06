@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {TouchableOpacity } from "react-native";
 import { Text, View } from "./Themed";
 import * as DocumentPicker from "expo-document-picker";
-import axios from "axios";
 
 const UploadFile = () => {
   const [selectedFile, setSelectedFile] = useState(null);

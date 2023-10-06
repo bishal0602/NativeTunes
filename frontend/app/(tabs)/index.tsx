@@ -1,9 +1,6 @@
-import { StyleSheet, Image } from "react-native";
-import { EvilIcons } from "@expo/vector-icons";
-import playedData from "../../assets/data/recentlyplayed";
+import { StyleSheet} from "react-native";
 
-// import EditScreenInfo from '../../components/EditScreenInfo';
-import { Text, View } from "../../components/Themed";
+import { View } from "../../components/Themed";
 import Welcome from "../../components/Welcome";
 import { MainScreenPlayer } from "../../components/MainScreenPlayer";
 import RecentlyPlayed from "../../components/RecentlyPlayed";

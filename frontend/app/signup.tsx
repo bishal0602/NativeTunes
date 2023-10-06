@@ -1,5 +1,4 @@
-// import { Image } from "expo-image";
-import React, { ReactNode, useState } from "react";
+import React, { useState } from "react";
 import {
   View,
   TextInput,
@@ -8,13 +7,10 @@ import {
   Text,
   SafeAreaView,
 } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
-import { warmUpAsync } from "expo-web-browser";
 import Font from "../constants/Font";
 import {
   GoogleSignin,
-  statusCodes,
 } from "@react-native-google-signin/google-signin";
 
 const JWT_URL = "/api/login/google";
@@ -31,7 +27,6 @@ export default function SignUp() {
   const [userInfo, setUserInfo] = useState({});
 
   function handleSignUp() {
-    const vaa = 0;
   }
   async function sendToBackend({ id_token }: { id_token: string }) {
     var xhr = new XMLHttpRequest();
