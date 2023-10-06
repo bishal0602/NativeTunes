@@ -2,6 +2,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="MediatR" Version="12.1.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.11" />
 	</ItemGroup>
 
 	<ItemGroup>

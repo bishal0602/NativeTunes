@@ -34,7 +34,7 @@ namespace NativeTunes.Infrastructure
             {
                 // TODO: Set Connection String
                 var connectionString = configuration.GetConnectionString("DatabaseConnectionString");
-                // options.UseSqlServer(connectionString);
+                //options.UseSqlServer(connectionString);
                 options.UseSqlite(connectionString);
             });
 
