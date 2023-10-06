@@ -28,7 +28,7 @@ export default function TabLayout() {
           title: 'Tab One',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
           headerRight: () => (
-            <Link href="/modal" asChild>
+            <Link href="/signup" asChild>
               <Pressable>
                 {({ pressed }) => (
                   <FontAwesome
@@ -58,7 +58,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="forum"
         options={{
           title: 'Forum',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,

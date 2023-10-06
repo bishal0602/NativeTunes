@@ -4,7 +4,7 @@ import { EvilIcons } from '@expo/vector-icons';
 
 // import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
-import Welcome from '../../components/welcomeback';
+import Welcome from '../../components/Welcome';
 
 
 export default function MarketplaceScreen() {
