@@ -5,6 +5,7 @@ import playedData from "../../assets/data/played";
 
 // import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
+import { MainScreenPlayer } from '../../components/MainScreenPlayer';
 
 export default function TabOneScreen() {
   return (
@@ -22,17 +23,13 @@ export default function TabOneScreen() {
         </View>
       </View>
       {/* played image */}
-      <View style={styles.played}>
-      </View>
+      <MainScreenPlayer title='Hello' albumArt='art' time='str'></MainScreenPlayer>
 
 
 
     </View>
   );
 }
-
-
-
 
 
 
@@ -55,9 +52,9 @@ const styles = StyleSheet.create({
   },
   texttitle :{},
   titlemain :{
-    paddingHorizontal: 20,
+    // paddingHorizontal: 20,
     fontSize:24,
-    fontWeight: 'semi-bold',
+    fontWeight: '600',
     color: "#FFFFFF"
   },
   titlesec:{
