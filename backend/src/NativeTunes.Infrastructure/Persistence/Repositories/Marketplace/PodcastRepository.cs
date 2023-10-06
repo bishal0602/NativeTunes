@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using NativeTunes.Application.Contracts.Persistence;
+using NativeTunes.Application.Contracts.Persistence.Podcasts;
 using NativeTunes.Domain.PodcastAggregate;
 using NativeTunes.Domain.PodcastAggregate.ValueObjects;
 using System;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NativeTunes.Infrastructure.Persistence.Repositories
+namespace NativeTunes.Infrastructure.Persistence.Repositories.Marketplace
 {
     public class PodcastRepository : IPodcastRepository
     {
@@ -20,11 +20,11 @@ namespace NativeTunes.Infrastructure.Persistence.Repositories
         }
         public async Task<IEnumerable<Podcast>> GetPodcastListAsync()
         {
-            return await _context.Podcasts.ToListAsync();
+            return await _context.Podcasts.Include(p => p.CreatedBy).ToListAsync();
         }
         public async Task<Podcast?> GetPodcastByIdAsync(PodcastId podcastId)
         {
-            return await _context.Podcasts.FirstOrDefaultAsync(p => p.Id == podcastId);
+            return await _context.Podcasts.Include(p => p.CreatedBy).FirstOrDefaultAsync(p => p.Id == podcastId);
         }
 
         public void AddPodcast(Podcast podcast)
@@ -38,7 +38,7 @@ namespace NativeTunes.Infrastructure.Persistence.Repositories
 
         public async Task<bool> SaveChangesAsync()
         {
-            return (await _context.SaveChangesAsync() > 0);
+            return await _context.SaveChangesAsync() > 0;
         }
     }
 }

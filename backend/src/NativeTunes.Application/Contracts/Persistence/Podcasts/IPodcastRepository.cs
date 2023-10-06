@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NativeTunes.Application.Contracts.Persistence
+namespace NativeTunes.Application.Contracts.Persistence.Podcasts
 {
     public interface IPodcastRepository
     {

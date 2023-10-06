@@ -16,7 +16,7 @@ namespace NativeTunes.Domain.PodcastAggregate
         public string CoverImageUrl { get; private set; }
         public string PodcastUrl { get; private set; }
         private Podcast() { } // ef core
-        private Podcast(PodcastId id, string title, string description, string language, string coverImageUrl, string podcastUrl)
+        private Podcast(PodcastId id, string title, string? description, string language, string coverImageUrl, string podcastUrl)
         {
             Id = id;
             Title = title;
@@ -25,8 +25,8 @@ namespace NativeTunes.Domain.PodcastAggregate
             CoverImageUrl = coverImageUrl;
             PodcastUrl = podcastUrl;
         }
-        public static Podcast Create(PodcastId id, string title, string description, string language, string coverImageUrl, string podcastUrl) => new(id, title, description, language, coverImageUrl, podcastUrl);
-        public static Podcast CreateNew(string title, string description, string language, string coverImageUrl, string podcastUrl) => new(PodcastId.CreateNew(), title, description, language, coverImageUrl, podcastUrl);
+        public static Podcast Create(PodcastId id, string title, string? description, string language, string coverImageUrl, string podcastUrl) => new(id, title, description, language, coverImageUrl, podcastUrl);
+        public static Podcast CreateNew(string title, string? description, string language, string coverImageUrl, string podcastUrl) => new(PodcastId.CreateNew(), title, description, language, coverImageUrl, podcastUrl);
 
     }
 }

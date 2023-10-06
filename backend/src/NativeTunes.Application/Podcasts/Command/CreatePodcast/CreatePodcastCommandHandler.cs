@@ -1,4 +1,5 @@
 ﻿using NativeTunes.Application.Contracts.Persistence;
+using NativeTunes.Application.Contracts.Persistence.Podcasts;
 using NativeTunes.Application.Extensions;
 using NativeTunes.Domain.PodcastAggregate;
 using System;

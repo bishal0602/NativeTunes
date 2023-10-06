@@ -8,10 +8,14 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using NativeTunes.Application.Contracts.Persistence;
+using NativeTunes.Application.Contracts.Persistence.Marketplace;
+using NativeTunes.Application.Contracts.Persistence.Podcasts;
 using NativeTunes.Application.Contracts.Services;
 using NativeTunes.Infrastructure.Interceptors;
 using NativeTunes.Infrastructure.Persistence;
 using NativeTunes.Infrastructure.Persistence.Repositories;
+using NativeTunes.Infrastructure.Persistence.Repositories.Marketplace;
+using NativeTunes.Infrastructure.Persistence.Repositories.Products;
 using NativeTunes.Infrastructure.Services;
 using NativeTunes.Infrastructure.Services.Authentication;
 using System.Text;
@@ -34,8 +38,8 @@ namespace NativeTunes.Infrastructure
             {
                 // TODO: Set Connection String
                 var connectionString = configuration.GetConnectionString("DatabaseConnectionString");
-                //options.UseSqlServer(connectionString);
-                options.UseSqlite(connectionString);
+                options.UseSqlServer(connectionString);
+                //options.UseSqlite(connectionString);
             });
 
             services.AddScoped<PublishDomainEventInterceptor>();
@@ -43,6 +47,7 @@ namespace NativeTunes.Infrastructure
 
             // Repositories
             services.AddScoped<IPodcastRepository, PodcastRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
 
             // Azure Blob Service
             services.AddOptions<AzureBlobSettings>()
