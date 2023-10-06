@@ -22,6 +22,8 @@ namespace NativeTunes.API.Controllers
             _mapper = mapper;
         }
         [HttpPost]
+        [ProducesResponseType(typeof(PodcastDto), statusCode: StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(ValidationProblemDetails), statusCode: StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> CreatePodcast([FromForm] PodcastForCreationDto podcast)
         {
             var command = new CreatePodcastCommand(podcast.Title, podcast.Description, podcast.AudioFile, podcast.CoverImage, podcast.Language);
@@ -30,7 +32,8 @@ namespace NativeTunes.API.Controllers
             if (result.IsFailure)
                 return Problem(result.Error);
 
-            return Ok(result.Value);
+            PodcastDto podcastToReturn = _mapper.Map<PodcastDto>(result.Value);
+            return CreatedAtRoute("GetPodcastById", new { podcastId = podcastToReturn.Id }, podcastToReturn);
         }
         [HttpGet]
         [ProducesResponseType(typeof(List<PodcastDto>), statusCode: StatusCodes.Status200OK)]
@@ -44,7 +47,7 @@ namespace NativeTunes.API.Controllers
             List<PodcastDto> podcasts = _mapper.Map<List<PodcastDto>>(result.Value);
             return Ok(podcasts);
         }
-        [HttpGet("{podcastId}")]
+        [HttpGet("{podcastId}", Name = "GetPodcastById")]
         [ProducesResponseType(typeof(PodcastDto), statusCode: StatusCodes.Status200OK)]
         public async Task<IActionResult> GetPodcastDetail([FromRoute] string podcastId)
         {
