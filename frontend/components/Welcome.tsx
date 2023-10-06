@@ -24,11 +24,6 @@ export default function Welcome() {
   )
 }
 const styles = StyleSheet.create({
-    // container: {
-    //   flex: 1,
-    //   backgroundColor: "#111111",
-    //   alignContent: 'center',
-    // },
     titleblock: {
       justifyContent: 'space-between',
       marginTop:30,
@@ -49,10 +44,10 @@ const styles = StyleSheet.create({
       color :"#585858",
     },
     searchbtn:{
+      backgroundColor: '#585858',
       height:40,
       width: 40,
       marginTop:15,
-      backgroundColor: '#585858',
       borderRadius:8,
       justifyContent:'center',
       alignItems:'center',
