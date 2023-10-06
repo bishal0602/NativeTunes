@@ -1,14 +1,17 @@
 import { StyleSheet,Image } from 'react-native';
 import { EvilIcons } from '@expo/vector-icons'; 
-import playedData from "../../assets/data/played";
+import playedData from "../../assets/data/recentlyplayed";
 
 
 // import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
 import Welcome from '../../components/Welcome';
 import { MainScreenPlayer } from '../../components/MainScreenPlayer';
-import { RecentlyPlayed } from '../../components/RecentlyPlayed';
+import RecentlyPlayed  from '../../components/RecentlyPlayed';
 import { ScrollView } from 'react-native-gesture-handler';
+import recentlyplayedData from '../../assets/data/recentlyplayed';
+import PopularData from '../../components/PopularData';
+import popularData from '../../assets/data/populardata';
 
 export default function TabOneScreen() {
   const image1Source=require('../../assets/images/kumari.png');
@@ -23,7 +26,8 @@ export default function TabOneScreen() {
       {/* played image */}
       
       <MainScreenPlayer title='Life As A Newar' albumArt={image1Source} time='15 mins of listening'></MainScreenPlayer>
-      <RecentlyPlayed title='How to win in life Podcast Episode 4(Newari)' albumArt={image2Source} time='15 mins of listening'></RecentlyPlayed>
+      <RecentlyPlayed recentlyplayedData={recentlyplayedData}></RecentlyPlayed>
+      <PopularData popularData={popularData}></PopularData>
 
 
     </View>

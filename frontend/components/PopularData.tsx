@@ -2,24 +2,17 @@ import {StyleSheet, Image,ImageBackground, FlatList} from 'react-native';
 import { Text, View } from './Themed';
 import { ImageSourcePropType } from 'react-native';
 import { EvilIcons } from '@expo/vector-icons';
-import recentlyplayedData from '../assets/data/recentlyplayed';
+import popularData from '../assets/data/populardata';
 
 
 
-export default function RecentlyPlayed ({recentlyplayedData} : {recentlyplayedData : {}}) {
-    const renderRecentlyPlayedItem=({item}: {item : { id: string, image: ImageSourcePropType, title:string, time:string}}) =>{
+export default function PopularData ({popularData} : {popularData : {}}) {
+    const renderPopularDataItem=({item}: {item : { id: string, image: ImageSourcePropType, title:string}}) =>{
         return(
             <View style={styles.mixcontainer}>
-            <Image source={item.image} style={styles.img}/>
-            <View style={styles.textBox}>
+                <Image source={item.image} style={styles.img}/>
                 <Text style={styles.title}>{item.title}</Text>
-                <View style={styles.time}>
-                    <EvilIcons name="clock" size={15} color="white" style={styles.clock}/>
-                    <Text style={styles.imgtime}>{item.time}</Text> 
-                </View>
-                {/* <Text style={styles.sub}>{time}</Text> */}
             </View>
-        </View>
             
         )
     }
@@ -29,14 +22,15 @@ export default function RecentlyPlayed ({recentlyplayedData} : {recentlyplayedDa
 
 // function RecentlyPlayed({albumArt, title, time}: {albumArt: ImageSourcePropType, title:string, time: string}){
     return (
-        <View style={styles.recentlyPlayedcontainer}>
-            <Text style={styles.recenttext}>Recently Played</Text>
+        <View style={styles.PopularDatacontainer}>
+            <Text style={styles.PopularDatatext}>Popular Podcasts</Text>
             <View style={styles.recentlyPlayedlistWrapper}>
                 <FlatList 
-                data={recentlyplayedData}
-                renderItem={renderRecentlyPlayedItem}
+                data={popularData}
+                renderItem={renderPopularDataItem}
                 keyExtractor={item => item.id}
-                vertical={true}
+                horizontal={true}
+                style={styles.recentlyPlayedlist}
                 />
 
             </View>
@@ -49,20 +43,24 @@ export default function RecentlyPlayed ({recentlyplayedData} : {recentlyplayedDa
 
 
 const styles = StyleSheet.create({
-    recentlyPlayedcontainer:{
-        flexDirection: 'column',
-        
+    PopularDatacontainer:{
+        flexDirection: 'column', 
         margin: 10,
     },
-    recenttext:{},
-    mixcontainer:{ 
-        flexDirection:'row',
-        marginTop:10
-        
+    PopularDatatext:{},
+    mixcontainer:{
+        width: 200,
+        height: 250,
+        flexDirection:'column',
+        marginTop:10,
+        marginHorizontal:7
+    },
+    recentlyPlayedlist:{
+        flexDirection: "row",
     },
     img:{
-        width:100,
-        height: 100,
+        width:200,
+        height: 200,
         // borderColor: 'red',
         // borderWidth: 10,
         marginRight:10,
@@ -77,7 +75,6 @@ const styles = StyleSheet.create({
 
     },
     title:{
-        width:'100%',
         // wordWrap: 'break-word',
     },
     sub:{},

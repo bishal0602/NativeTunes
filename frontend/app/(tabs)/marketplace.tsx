@@ -11,7 +11,6 @@ export default function MarketplaceScreen() {
   return (
     <View style={styles.container}>
       <Welcome/>
-
     </View>
   )
 }
