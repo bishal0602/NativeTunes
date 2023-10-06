@@ -2,23 +2,11 @@ import React, { useState} from "react";
 import { Image, View, Text, StyleSheet } from "react-native";
 
 import { Entypo } from '@expo/vector-icons';
+import { Product } from "./AppService";
 
-export interface Data {
-    id: string;
-    imgURL: string;
-    createdBy: {
-        profilePicture: string;
-        userName: string;
-    };
-    createdOn: Date;
-    title: string;
-    likes: number;
-    price: number;
-    description: string;
-}
 
 interface PostProp{
-    data: Data,
+    data: Product,
 }
 
 export default function Post({data}: PostProp) {
@@ -33,22 +21,22 @@ export default function Post({data}: PostProp) {
             setLikes(preVal=>preVal+1);
         }
     }
-    
+    // TODO
     return (
         <View style={styles.container}>
          
             <View style={styles.userInfo}>
             <Image
               style={styles.avatar}
-              source={{uri: data.createdBy.profilePicture}}
+              source={{uri: 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60'}}
             />
-            <Text style={styles.username}>{data.createdBy.userName}</Text>
+            <Text style={styles.username}>{"random user"}</Text>
           </View>
     
           
           <Image
             style={styles.postImage}
-            source={{uri: data.imgURL}}
+            source={{uri: data.imageUrl}}
           />
 
           <View style={{
