@@ -6,8 +6,10 @@ import playedData from "../../assets/data/played";
 // import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
 import Welcome from '../../components/welcomeback';
+import { MainScreenPlayer } from '../../components/MainScreenPlayer';
 
 export default function TabOneScreen() {
+  const imageSource=require('../../assets/images/kumari.png');
   return (
     <View style={styles.container}>
       {/* blocktitle */}
@@ -15,8 +17,8 @@ export default function TabOneScreen() {
 
 
       {/* played image */}
-      <View style={styles.played}>
-      </View>
+      
+      <MainScreenPlayer title='art' albumArt={imageSource} time='30'></MainScreenPlayer>
 
 
 

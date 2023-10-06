@@ -1,10 +1,12 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Image} from 'react-native';
 import { Text, View } from './Themed';
+import { ImageSourcePropType } from 'react-native';
 
 
-export function MainScreenPlayer({albumArt, title, time}: {albumArt: string, title:string, time: string}){
+
+export function MainScreenPlayer({albumArt, title, time}: {albumArt: ImageSourcePropType, title:string, time: string}){
     return <View style={styles.container}>
-        <Text>{albumArt}</Text>
+        <Image source={albumArt} />
         <Text>{title}</Text>
         <Text>{time}</Text>        
     </View>
