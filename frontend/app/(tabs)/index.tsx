@@ -15,17 +15,14 @@ export default function TabOneScreen() {
 
 
       {/* played image */}
-      {/* <View style={styles.played}> */}
-      {/* </View> */}
+      <View style={styles.played}>
+      </View>
 
 
 
     </View>
   );
 }
-
-
-
 
 
 
@@ -48,9 +45,9 @@ const styles = StyleSheet.create({
   },
   texttitle :{},
   titlemain :{
-    paddingHorizontal: 20,
+    // paddingHorizontal: 20,
     fontSize:24,
-    fontWeight: 'semi-bold',
+    fontWeight: '600',
     color: "#FFFFFF"
   },
   titlesec:{
