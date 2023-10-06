@@ -7,9 +7,9 @@ import { Text, View } from './Themed';
 
 export default function Welcome() {
   return (
-    <View style={styles.container}>
-      {/* blocktitle */}
+    // <View style={styles.container}>
       <View style={styles.titleblock}>
+      {/* blocktitle */}
         {/* tile */}
         <View style={styles.texttitle}>
           <Text style={styles.titlemain}>Welcome Back!</Text>
@@ -20,20 +20,21 @@ export default function Welcome() {
         <EvilIcons name="search" size={24} color="white"  />
         </View>
       </View>
-      </View>
+    //   </View>
   )
 }
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: "#111111",
-      alignContent: 'center',
-    },
+    // container: {
+    //   flex: 1,
+    //   backgroundColor: "#111111",
+    //   alignContent: 'center',
+    // },
     titleblock: {
       justifyContent: 'space-between',
       marginTop:30,
       paddingHorizontal: 20,
       flexDirection: 'row',
+      paddingBottom: 20,
     },
     texttitle :{},
     titlemain :{
@@ -51,6 +52,7 @@ const styles = StyleSheet.create({
     searchbtn:{
       height:40,
       width: 40,
+      marginTop:15,
       backgroundColor: '#585858',
       borderRadius:8,
       justifyContent:'center',

@@ -18,7 +18,7 @@ export default function TabOneScreen() {
 
       {/* played image */}
       
-      <MainScreenPlayer title='art' albumArt={imageSource} time='30'></MainScreenPlayer>
+      <MainScreenPlayer title='Life As A Newar' albumArt={imageSource} time='15 mins of listening'></MainScreenPlayer>
 
 
 
