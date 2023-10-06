@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
       },
     imgtime:{
         color:'#F5F5F5',
-        font:10,
+        // font:10,
         opacity:0.7,
     },
     recentlyPlayedlistWrapper:{},
