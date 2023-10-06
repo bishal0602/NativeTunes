@@ -68,54 +68,16 @@ const handleAddTask =()=> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#E8EAED',
-   
-  },
-  taskWrapper:{
-    paddingTop:20,
-    paddingHorizontal:20,
-    // backgroundColor:"#816C61"
-  },
-
-  sectionTitle:{
-    fontSize: 24,
-    
-  },
-  items:{
-    paddingTop: 20,
-  },
-  writeTaskWrapper:{
-    position: 'absolute',
-    bottom: 60,
-    // borderColor:'red',
-    // borderWidth:10,
-    width: "100%",
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: "center"
-  },
-  input:{
-    paddingVertical: 15,
-    paddingHorizontal: 15,
-    width :260,
-    backgroundColor: "#ffff",
-    borderRadius: 60,
-    borderColor: "#C0C0C0",
-    borderWidth: 1,
-  },
-  addWrapper:{
-    width: 60,
-    height:60,
-    justifyContent:'center',
-    backgroundColor: "#ffff",
-    borderRadius: 60,
-    borderColor: "#C0C0C0",
-    borderWidth: 1,
-    alignItems: 'center'
-  },
-  addText:{
-    position: "absolute",
+    alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor : '#fff',
-  }
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  separator: {
+    marginVertical: 30,
+    height: 1,
+    width: '80%',
+  },
 });

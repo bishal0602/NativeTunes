@@ -1,76 +1,74 @@
-import { StyleSheet,Image } from 'react-native';
-import { EvilIcons } from '@expo/vector-icons'; 
+import { StyleSheet, Image } from "react-native";
+import { EvilIcons } from "@expo/vector-icons";
 import playedData from "../../assets/data/recentlyplayed";
 
-
 // import EditScreenInfo from '../../components/EditScreenInfo';
-import { Text, View } from '../../components/Themed';
-import Welcome from '../../components/Welcome';
-import { MainScreenPlayer } from '../../components/MainScreenPlayer';
-import RecentlyPlayed  from '../../components/RecentlyPlayed';
-import { ScrollView } from 'react-native-gesture-handler';
-import recentlyplayedData from '../../assets/data/recentlyplayed';
-import PopularData from '../../components/PopularData';
-import popularData from '../../assets/data/popularData';
+import { Text, View } from "../../components/Themed";
+import Welcome from "../../components/Welcome";
+import { MainScreenPlayer } from "../../components/MainScreenPlayer";
+import RecentlyPlayed from "../../components/RecentlyPlayed";
+import { ScrollView } from "react-native-gesture-handler";
+import recentlyplayedData from "../../assets/data/recentlyplayed";
+import PopularData from "../../components/PopularData";
+import popularData from "../../assets/data/popularData";
 
 export default function TabOneScreen() {
-  const image1Source=require('../../assets/images/kumari.png');
-  const image2Source=require('../../assets/images/ind2.jpg');
+  const image1Source = require("../../assets/images/kumari.png");
+  const image2Source = require("../../assets/images/ind2.jpg");
   return (
     <ScrollView>
-       <View style={styles.container}>
-      {/* blocktitle */}
-     <Welcome/>
+      <View style={styles.container}>
+        {/* blocktitle */}
+        <Welcome />
 
+        {/* played image */}
 
-      {/* played image */}
-      
-      <MainScreenPlayer title='Life As A Newar' albumArt={image1Source} time='15 mins of listening'></MainScreenPlayer>
-      <RecentlyPlayed recentlyplayedData={recentlyplayedData}></RecentlyPlayed>
-      <PopularData popularData={popularData}></PopularData>
-
-
-    </View>
+        <MainScreenPlayer
+          title="Life As A Newar"
+          albumArt={image1Source}
+          time="15 mins of listening"
+        ></MainScreenPlayer>
+        <RecentlyPlayed
+          recentlyplayedData={recentlyplayedData}
+        ></RecentlyPlayed>
+        <PopularData popularData={popularData}></PopularData>
+      </View>
     </ScrollView>
-   
   );
 }
-
-
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#111111",
-    alignContent: 'center',
+    alignContent: "center",
   },
   titleblock: {
-    justifyContent: 'space-between',
-    marginTop:30,
+    justifyContent: "space-between",
+    marginTop: 30,
     paddingHorizontal: 20,
-    flexDirection: 'row',
+    flexDirection: "row",
   },
-  texttitle :{},
-  titlemain :{
+  texttitle: {},
+  titlemain: {
     // paddingHorizontal: 20,
-    fontSize:24,
-    fontWeight: '600',
-    color: "#FFFFFF"
+    fontSize: 24,
+    fontWeight: "600",
+    color: "#FFFFFF",
   },
-  titlesec:{
+  titlesec: {
     paddingHorizontal: 20,
     paddingTop: 10,
-    fontSize:14,
-    color :"#585858",
+    fontSize: 14,
+    color: "#585858",
   },
-  searchbtn:{
-    height:40,
+  searchbtn: {
+    height: 40,
     width: 40,
-    backgroundColor: '#585858',
-    borderRadius:8,
-    justifyContent:'center',
-    alignItems:'center',
-    margin:5
+    backgroundColor: "#585858",
+    borderRadius: 8,
+    justifyContent: "center",
+    alignItems: "center",
+    margin: 5,
   },
-  
 });
