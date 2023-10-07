@@ -9,7 +9,7 @@ export interface Product {
   price: number;
   likes: number;
   imageUrl: string;
-  createdOn: string;
+  createdOn: Date;
   createdBy: {
     id: string;
   };
@@ -27,6 +27,27 @@ export interface Podcast {
     id: string;
   };
 }
+
+export interface Article {
+  id: string;
+  title: string;
+  description: string;
+  likes: number;
+  createdOn: string;
+  createdBy: {
+    id: string;
+  };
+}
+
+//TODO : correct BASEURL
+export const fetchArticles = async (): Promise<Article[]> => {
+  try {
+    const response = await axios.get(`${BASE_URL}/library/articles`);
+    return response.data as Article[];
+  } catch (error) {
+    throw error;
+  }
+};
 
 export const fetchProducts = async (): Promise<Product[]> => {
   try {
