@@ -7,14 +7,14 @@ import {
   Text,
   SafeAreaView,
 } from "react-native";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { AntDesign } from "@expo/vector-icons";
 import Font from "../constants/Font";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import axios from "axios";
 
 const JWT_URL = "/api/login/google";
-const API_END = "https://nativetunes.azurewebsites.net/api/auth/register";
+const API_END = "http://nativetunes.azurewebsites.net/api/auth/register";
 
 export default function SignUp() {
   // const [password, setPassword] = useState('');
@@ -38,9 +38,9 @@ export default function SignUp() {
       data.append("firstName", firstName);
       data.append("lastName", lastName);
       // Fetch the image and convert it to a Blob
-      const imageResponse = await fetch(image);
+      const imageResponse = await fetch(image? image:  require("../assets/logo.jpg"));
       const imageBlob = await imageResponse.blob();
-      data.append("profilePicture", imageBlob, 'profile.jpeg');
+      data.append("profilePicture", imageBlob, "profile.jpeg");
       data.append("password", password);
       let res = await fetch(API_END, {
         method: "post",
@@ -52,10 +52,7 @@ export default function SignUp() {
       let responseJson = await res.json();
       setUserInfo(responseJson);
       const jsonValue = JSON.stringify(responseJson);
-      await AsyncStorage.setItem(
-        'USERINFO',
-        jsonValue,
-      );
+      await AsyncStorage.setItem("USERINFO", jsonValue);
     } catch (error) {
       console.error("Error signing up:", error);
     }
@@ -93,34 +90,30 @@ export default function SignUp() {
   return (
     <SafeAreaView style={styles.container}>
       <TextInput
+        style={styles.input}
         placeholder="First Name"
         value={firstName}
         onChangeText={setFirstName}
       />
       <TextInput
+        style={styles.input}
         placeholder="Last Name"
-        value={firstName}
+        value={lastName}
         onChangeText={setLastName}
       />
       <TextInput
+        style={styles.input}
         placeholder="Email Address"
         value={email}
         onChangeText={setEmail}
       />
-      <View>
-        <TextInput
-          placeholder="Password"
-          value={password}
-          onChangeText={setPassword}
-        />
-        {/* <MaterialCommunityIcons 
-                    name={showPassword ? 'eye-off' : 'eye'} 
-                    size={24} 
-                    color="#aaa"
-                    style={styles.icon} 
-                    onPress={toggleShowPassword} 
-            />  */}
-      </View>
+
+      <TextInput
+        style={styles.input}
+        placeholder="Password"
+        value={password}
+        onChangeText={setPassword}
+      />
       <Pressable
         style={styles.button}
         onPress={() => {
