@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NativeTunes.API.Models.Podcasts;
 using NativeTunes.Application.Podcasts.Command.CreatePodcast;
@@ -21,6 +22,7 @@ namespace NativeTunes.API.Controllers
             _mediator = mediator;
             _mapper = mapper;
         }
+        [Authorize]
         [HttpPost]
         [ProducesResponseType(typeof(PodcastDto), statusCode: StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(ValidationProblemDetails), statusCode: StatusCodes.Status400BadRequest)]

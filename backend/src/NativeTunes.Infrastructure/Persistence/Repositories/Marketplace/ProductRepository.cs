@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NativeTunes.Application.Contracts.Persistence.Marketplace;
 
-namespace NativeTunes.Infrastructure.Persistence.Repositories.Products
+namespace NativeTunes.Infrastructure.Persistence.Repositories.Marketplace
 {
     public class ProductRepository : IProductRepository
     {

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NativeTunes.Domain.Common.Interfaces;
+using NativeTunes.Domain.ForumAggregate;
 using NativeTunes.Domain.MarketplaceAggregate;
 using NativeTunes.Domain.PodcastAggregate;
 using NativeTunes.Domain.UserAggregate;
@@ -26,6 +27,7 @@ namespace NativeTunes.Infrastructure.Persistence
         public DbSet<Podcast> Podcasts { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Post> Posts { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.AddInterceptors(_publishDomainEventInterceptor, _auditableInterceptor);

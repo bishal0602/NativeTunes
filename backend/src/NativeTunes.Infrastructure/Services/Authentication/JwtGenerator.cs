@@ -32,10 +32,9 @@ namespace NativeTunes.Infrastructure.Services.Authentication
             var claims = new[]
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.Id.Value.ToString()),
-                //new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName),
-                //new Claim(JwtRegisteredClaimNames.GivenName, user.FirstName),
-                //new Claim(JwtRegisteredClaimNames.FamilyName, user.LastName),
-                //new Claim(JwtRegisteredClaimNames.Email, user.Email),
+                new Claim(JwtRegisteredClaimNames.GivenName, user.FirstName),
+                new Claim(JwtRegisteredClaimNames.FamilyName, user.LastName),
+                new Claim(JwtRegisteredClaimNames.Email, user.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()) // jwt token identifier
             };
 
@@ -45,7 +44,7 @@ namespace NativeTunes.Infrastructure.Services.Authentication
                 claims: claims,
                 signingCredentials: signingCredentials,
                 notBefore: _dateTimeProvider.Now,
-                expires: _dateTimeProvider.Now.AddMinutes(_jwtSettings.ExpirationTimeInMinutes)
+                expires: _dateTimeProvider.Now.AddYears(_jwtSettings.ExpirationTimeInMinutes) // Using year insead of year for demo
                 );
 
             return new JwtSecurityTokenHandler().WriteToken(securityToken);

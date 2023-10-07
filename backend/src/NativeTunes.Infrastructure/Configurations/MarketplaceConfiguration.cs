@@ -10,7 +10,7 @@ using NativeTunes.Domain.MarketplaceAggregate.ValueObjects;
 
 namespace NativeTunes.Infrastructure.Configurations
 {
-    public class ProductConfiguration : IEntityTypeConfiguration<Product>
+    public class MarketplaceConfiguration : IEntityTypeConfiguration<Product>
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
@@ -18,6 +18,10 @@ namespace NativeTunes.Infrastructure.Configurations
 
             builder.HasKey(e => e.Id);
             builder.Property(e => e.Id).HasConversion(id => id.Value, value => ProductId.Create(value));
+
+            builder.Property(e => e.Price)
+                   .HasColumnType("decimal(18, 2)") // Adjust the precision and scale as needed
+                   .IsRequired();
         }
     }
 

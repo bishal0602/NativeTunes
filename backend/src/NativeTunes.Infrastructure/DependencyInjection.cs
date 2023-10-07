@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -8,14 +9,19 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using NativeTunes.Application.Contracts.Persistence;
+using NativeTunes.Application.Contracts.Persistence.Forum;
 using NativeTunes.Application.Contracts.Persistence.Marketplace;
 using NativeTunes.Application.Contracts.Persistence.Podcasts;
+using NativeTunes.Application.Contracts.Persistence.Users;
 using NativeTunes.Application.Contracts.Services;
+using NativeTunes.Domain.UserAggregate;
 using NativeTunes.Infrastructure.Interceptors;
 using NativeTunes.Infrastructure.Persistence;
 using NativeTunes.Infrastructure.Persistence.Repositories;
+using NativeTunes.Infrastructure.Persistence.Repositories.Forum;
 using NativeTunes.Infrastructure.Persistence.Repositories.Marketplace;
-using NativeTunes.Infrastructure.Persistence.Repositories.Products;
+using NativeTunes.Infrastructure.Persistence.Repositories.Podcasts;
+using NativeTunes.Infrastructure.Persistence.Repositories.Users;
 using NativeTunes.Infrastructure.Services;
 using NativeTunes.Infrastructure.Services.Authentication;
 using System.Text;
@@ -48,6 +54,8 @@ namespace NativeTunes.Infrastructure
             // Repositories
             services.AddScoped<IPodcastRepository, PodcastRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IForumRepository, ForumRepository>();
 
             // Azure Blob Service
             services.AddOptions<AzureBlobSettings>()
@@ -60,6 +68,8 @@ namespace NativeTunes.Infrastructure
         }
         private static IServiceCollection AddAuth(this IServiceCollection services, ConfigurationManager configuration)
         {
+            services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
+
             var jwtSettings = new JwtSettings();
             configuration.Bind(JwtSettings.SectionName, jwtSettings);
             services.AddSingleton(Options.Create(jwtSettings));
