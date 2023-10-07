@@ -8,29 +8,31 @@ import { ScrollView } from "react-native-gesture-handler";
 import recentlyplayedData from "../../assets/data/recentlyplayed";
 import PopularData from "../../components/PopularData";
 import popularData from "../../assets/data/popularData";
+import Upload from "../upload";
 
 export default function TabOneScreen() {
   const image1Source = require("../../assets/images/kumari.png");
   const image2Source = require("../../assets/images/ind2.jpg");
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        {/* blocktitle */}
-        <Welcome />
+    // <ScrollView>
+    //   <View style={styles.container}>
+    //     {/* blocktitle */}
+    //     <Welcome />
 
-        {/* played image */}
+    //     {/* played image */}
 
-        <MainScreenPlayer
-          title="Life As A Newar"
-          albumArt={image1Source}
-          time="15 mins of listening"
-        ></MainScreenPlayer>
-        <RecentlyPlayed
-          recentlyplayedData={recentlyplayedData}
-        ></RecentlyPlayed>
-        <PopularData popularData={popularData}></PopularData>
-      </View>
-    </ScrollView>
+    //     <MainScreenPlayer
+    //       title="Life As A Newar"
+    //       albumArt={image1Source}
+    //       time="15 mins of listening"
+    //     ></MainScreenPlayer>
+    //     <RecentlyPlayed
+    //       recentlyplayedData={recentlyplayedData}
+    //     ></RecentlyPlayed>
+    //     <PopularData popularData={popularData}></PopularData>
+    //   </View>
+    // </ScrollView>
+    <Upload />
   );
 }
 
