@@ -28,7 +28,7 @@ namespace NativeTunes.Application.Authentication.Command.LoginWithGoogle
 
             // TODO: Implement login with google
 
-            User user1 = User.CreateNew();
+            User user1 = User.CreateNew("John", "Doe", "johndoe@gmail.com", "Password123", null);
             var token = _jwtGenerator.CreateToken(user1);
             return new AuthenticationResponse(user1, token);
 

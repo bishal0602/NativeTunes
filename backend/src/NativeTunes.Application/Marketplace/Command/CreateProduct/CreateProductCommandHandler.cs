@@ -22,7 +22,7 @@ namespace NativeTunes.Application.Marketplace.Command.CreateProduct
         }
         public async Task<Result<Product, Error>> Handle(CreateProductCommand request, CancellationToken cancellationToken)
         {
-            var validationResult = await request.ValidateAsync(new CreateProductCommandValidator());
+            var validationResult = await request.ValidateAsync(new CreateProductCommandValidator(), cancellationToken);
             if (validationResult.IsFailure)
                 return validationResult.Error;
 

@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NativeTunes.Infrastructure.Persistence.Repositories.Marketplace
+namespace NativeTunes.Infrastructure.Persistence.Repositories.Podcasts
 {
     public class PodcastRepository : IPodcastRepository
     {

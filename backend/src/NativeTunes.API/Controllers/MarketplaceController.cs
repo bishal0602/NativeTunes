@@ -6,6 +6,7 @@ using NativeTunes.Application.Marketplace.Command.CreateProduct;
 using NativeTunes.Application.Marketplace.Command.DeleteProduct;
 using NativeTunes.Application.Marketplace.Query.GetProductDetail;
 using NativeTunes.Application.Marketplace.Query;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NativeTunes.API.Controllers
 {
@@ -20,6 +21,7 @@ namespace NativeTunes.API.Controllers
             _mapper = mapper;
             _mediator = mediator;
         }
+        [Authorize]
         [HttpPost("products")]
         [ProducesResponseType(typeof(ProductDto), statusCode: StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(ValidationProblemDetails), statusCode: StatusCodes.Status400BadRequest)]

@@ -17,9 +17,6 @@ namespace NativeTunes.API.Mappings
           .ForMember(dest => dest.PodcastUrl, opt => opt.MapFrom(src => src.PodcastUrl))
           .ForMember(dest => dest.CreatedOn, opt => opt.MapFrom(src => src.CreatedOn))
           .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => src.CreatedBy));
-
-            // If CreatedBy is nullable in Podcast, handle null value by ignoring it
-            CreateMap<Domain.UserAggregate.User, UserDto>().ReverseMap();
         }
     }
 }
