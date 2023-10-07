@@ -17,7 +17,7 @@ const UploadFile = () => {
     }
   };
 
-  const handleUpload = () => {
+   const handleUpload = () => {
     // Implement file upload logic using Axios or your preferred method
     // Example:
     // axios.post('YOUR_UPLOAD_URL', { file: selectedFile });
@@ -26,11 +26,11 @@ const UploadFile = () => {
   return (
     <View>
       <TouchableOpacity onPress={pickDocument}>
-        <Text>Select File</Text>
+        <Text>Select Audio</Text>
       </TouchableOpacity>
       {selectedFile && (
         <TouchableOpacity onPress={handleUpload}>
-          <Text>Upload File</Text>
+          <Text>Upload Audio</Text>
         </TouchableOpacity>
       )}
     </View>
