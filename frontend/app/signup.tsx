@@ -6,14 +6,15 @@ import {
   Pressable,
   Text,
   SafeAreaView,
+  AsyncStorage,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import Font from "../constants/Font";
-import {
-  GoogleSignin,
-} from "@react-native-google-signin/google-signin";
+import { GoogleSignin } from "@react-native-google-signin/google-signin";
+import axios from "axios";
 
 const JWT_URL = "/api/login/google";
+const API_END = "https://nativetunes.azurewebsites.net/api/auth/register";
 
 export default function SignUp() {
   // const [password, setPassword] = useState('');
@@ -23,11 +24,41 @@ export default function SignUp() {
   // const toggleShowPassword = () => {
   //     setShowPassword(!showPassword);
   // };
-
+  const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [image, setImage] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [password, setPassword] = useState("");
   const [userInfo, setUserInfo] = useState({});
 
-  function handleSignUp() {
-  }
+  const handleSignUp = async () => {
+    try {
+      const data = new FormData();
+      data.append("email", email);
+      data.append("firstName", firstName);
+      data.append("lastName", lastName);
+      // Fetch the image and convert it to a Blob
+      const imageResponse = await fetch(image);
+      const imageBlob = await imageResponse.blob();
+      data.append("profilePicture", imageBlob, 'profile.jpeg');
+      data.append("password", password);
+      let res = await fetch(API_END, {
+        method: "post",
+        body: data,
+        headers: {
+          "Content-Type": "multipart/form-data; ",
+        },
+      });
+      let responseJson = await res.json();
+      setUserInfo(responseJson);
+      await AsyncStorage.setItem(
+        'USERINFO',
+        userInfo,
+      );
+    } catch (error) {
+      console.error("Error signing up:", error);
+    }
+  };
   async function sendToBackend({ id_token }: { id_token: string }) {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", JWT_URL);
@@ -60,10 +91,27 @@ export default function SignUp() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <InputField place_holder="Username" secure={false} />
-      <InputField place_holder="Email Address" secure={false} />
+      <TextInput
+        placeholder="First Name"
+        value={firstName}
+        onChangeText={setFirstName}
+      />
+      <TextInput
+        placeholder="Last Name"
+        value={firstName}
+        onChangeText={setLastName}
+      />
+      <TextInput
+        placeholder="Email Address"
+        value={email}
+        onChangeText={setEmail}
+      />
       <View>
-        <InputField place_holder="Password" secure={true} />
+        <TextInput
+          placeholder="Password"
+          value={password}
+          onChangeText={setPassword}
+        />
         {/* <MaterialCommunityIcons 
                     name={showPassword ? 'eye-off' : 'eye'} 
                     size={24} 

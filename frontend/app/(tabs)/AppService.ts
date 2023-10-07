@@ -33,7 +33,7 @@ export interface Article {
   title: string;
   description: string;
   likes: number;
-  createdOn: string;
+  createdOn: Date;
   createdBy: {
     id: string;
   };

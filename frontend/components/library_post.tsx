@@ -12,6 +12,7 @@ interface ArticleProp {
 export default function TextPost({ data }: ArticleProp) {
   const [isLiked, setLiked] = useState(false);
   const [likes, setLikes] = useState(data.likes);
+  const [isExpanded, setExpanded] = useState(false);
   const handleLike = () => {
     setLiked(!isLiked);
     if (isLiked) {
@@ -20,9 +21,14 @@ export default function TextPost({ data }: ArticleProp) {
       setLikes((preVal) => preVal + 1);
     }
   };
+
+  const expandCard = () => {
+    setExpanded(!isExpanded);
+  }
 // TODO: update user
   return (
     <View style={styles.container}>
+      
       <Text style={styles.caption}>{data.title}</Text>
       <View
       style={{
@@ -32,11 +38,11 @@ export default function TextPost({ data }: ArticleProp) {
         alignSelf: "center",
       }}
       />
-
-      <Text numberOfLines={3}
+      <Pressable onPress={expandCard}>
+      <Text numberOfLines={isExpanded? 1000 : 4}
         style={{
           paddingTop: 8,
-          width: 410,
+          width: 375,
           paddingLeft: 10,
           paddingRight: 10,
 
@@ -44,6 +50,7 @@ export default function TextPost({ data }: ArticleProp) {
       >
         {data.description}
       </Text>
+      </Pressable>
 
       <View
         style={{
@@ -60,7 +67,7 @@ export default function TextPost({ data }: ArticleProp) {
       </View>
         <Entypo
           style={{
-            marginLeft: 190,
+            marginLeft: 160,
             paddingTop: 10,
           }}
           name={isLiked ? "heart" : "heart-outlined"}
@@ -79,6 +86,14 @@ export default function TextPost({ data }: ArticleProp) {
         </Text>
       
       </View>
+      <View>
+        <Text style={{
+          paddingLeft: 50,
+          marginVertical: 0,
+        }}>
+          {data.createdOn.toLocaleDateString()}
+        </Text>
+      </View>
       
   </View>
   );
@@ -86,6 +101,8 @@ export default function TextPost({ data }: ArticleProp) {
 
 const styles = StyleSheet.create({
   container: {
+    alignSelf: "center",
+    width: 375,
     backgroundColor: "white",
     marginTop: 5,
     marginBottom: 5,
@@ -96,9 +113,10 @@ const styles = StyleSheet.create({
   userInfo: {
     flexDirection: "row",
     alignItems: "center",
-    padding: 10,
+    paddingTop: 10,
   },
   avatar: {
+    marginLeft: 10,
     width: 30,
     height: 30,
     borderRadius: 20,
