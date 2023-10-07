@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Image, View, Text, StyleSheet, Pressable } from "react-native";
 
 import { Entypo } from "@expo/vector-icons";
-import { Article } from "../app/(tabs)/AppService";
+import { Article } from "../app/(tabs)/ApiService";
 
 
 interface ArticleProp {

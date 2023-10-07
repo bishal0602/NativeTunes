@@ -12,7 +12,7 @@ import {
 import { useEffect, useState } from "react";
 
 import { useLocalSearchParams } from "expo-router";
-import { Podcast, fetchPodcastbyId } from "../../(tabs)/AppService";
+import { Podcast, fetchPodcastbyId } from "../../(tabs)/ApiService";
 
 const Dev_Height = Dimensions.get("window").height;
 const Dev_Width = Dimensions.get("window").width;

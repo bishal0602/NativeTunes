@@ -10,22 +10,7 @@ export interface Product {
   likes: number;
   imageUrl: string;
   createdOn: Date;
-  createdBy: {
-    id: string;
-  };
-}
-
-export interface Podcast {
-  id: string;
-  title: string;
-  description: string;
-  language: string;
-  coverImageUrl: string;
-  podcastUrl: string;
-  createdOn: string;
-  createdBy: {
-    id: string;
-  };
+  createdBy? :User;
 }
 
 export interface Article {
@@ -34,9 +19,24 @@ export interface Article {
   description: string;
   likes: number;
   createdOn: Date;
-  createdBy: {
-    id: string;
-  };
+  createdBy?: User;
+}
+export interface User {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  profilePicture: string;
+}
+export interface Podcast {
+  id: string;
+  title: string;
+  description?: string;
+  language: string;
+  coverImageUrl: string;
+  podcastUrl: string;
+  createdOn: string;
+  createdBy?:User ;
 }
 
 //TODO : correct BASEURL
@@ -64,8 +64,16 @@ export const fetchPodcastbyId = async ({
   id: string;
 }): Promise<Podcast> => {
   try {
-    const response = await axios.get(`$(BASE_URL)/podcast/{id}`);
+    const response = await axios.get(`${BASE_URL}/podcasts/${id}`);
     return response.data as Podcast;
+  } catch (error) {
+    throw error;
+  }
+};
+export const fetchPodcasts = async (): Promise<Podcast[]> => {
+  try {
+    const response = await axios.get(`${BASE_URL}/podcasts/`);
+    return response.data as Podcast[];
   } catch (error) {
     throw error;
   }

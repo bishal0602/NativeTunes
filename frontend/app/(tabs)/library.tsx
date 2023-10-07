@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, FlatList } from "react-native";
 
-import {Article, fetchArticles} from './AppService';
+import {Article, fetchArticles} from './ApiService';
 import TextPost from "../../components/library_post";
 
 

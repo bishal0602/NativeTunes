@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, FlatList } from "react-native";
 import Post from "../../components/marketplace_post";
-import { Product, fetchProducts } from "./AppService";
+import { Product, fetchProducts } from "./ApiService";
 
 export default function MarketplaceScreen() {
   const [products, setProducts] = useState<Product[]>([]);

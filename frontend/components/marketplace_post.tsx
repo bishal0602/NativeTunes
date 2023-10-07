@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Image, View, Text, StyleSheet, Pressable } from "react-native";
 
 import { Entypo } from "@expo/vector-icons";
-import { Product } from "../app/(tabs)/AppService";
+import { Product } from "../app/(tabs)/ApiService";
 
 
 interface PostProp {
@@ -26,9 +26,9 @@ export default function Post({ data }: PostProp) {
       <View style={styles.userInfo}>
         <Image
           style={styles.avatar}
-          source={{ uri: "https://www.computerhope.com/jargon/g/guest-user.png"}}
+          source={{ uri: data.createdBy? data.createdBy.profilePicture : "https://fh-sites.imgix.net/sites/3119/2019/08/30165753/IMG_9940-scaled.jpg?auto=compress%2Cformat&w=1000&h=1000&fit=max"}}
         />
-        <Text style={styles.username}>random usser</Text>
+        <Text style={styles.username}>{data.createdBy ? `${data.createdBy.firstName} ${data.createdBy.lastName}`: "Ramu Chamling"} </Text>
       </View>
 
       <Image style={styles.postImage} source={{ uri: data.imageUrl }} />

@@ -1,16 +1,21 @@
 import { StyleSheet, Image, ImageBackground, FlatList } from "react-native";
 import { Text, View } from "./Themed";
 import { ImageSourcePropType } from "react-native";
+import { Podcast } from "../app/(tabs)/ApiService";
 
-export default function PopularData({ popularData }: { popularData: {} }) {
+
+interface IPopularPodcasts{
+  podcasts: Podcast[]
+}
+export default function PopularPodcasts({ podcasts }: IPopularPodcasts) {
   const renderPopularDataItem = ({
     item,
   }: {
-    item: { id: string; image: ImageSourcePropType; title: string };
+    item: Podcast
   }) => {
     return (
       <View style={styles.mixcontainer}>
-        <Image source={item.image} style={styles.img} />
+        <Image source={{uri: item.coverImageUrl}} style={styles.img} />
         <Text style={styles.title}>{item.title}</Text>
       </View>
     );
@@ -22,7 +27,7 @@ export default function PopularData({ popularData }: { popularData: {} }) {
       <Text style={styles.PopularDatatext}>Popular Podcasts</Text>
       <View style={styles.recentlyPlayedlistWrapper}>
         <FlatList
-          data={popularData}
+          data={podcasts}
           renderItem={renderPopularDataItem}
           keyExtractor={(item) => item.id}
           horizontal={true}

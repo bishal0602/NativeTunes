@@ -2,35 +2,25 @@ import { StyleSheet, Image, ImageBackground, FlatList } from "react-native";
 import { Text, View } from "./Themed";
 import { ImageSourcePropType } from "react-native";
 import { EvilIcons } from "@expo/vector-icons";
+import { Podcast } from "../app/(tabs)/ApiService";
+import timeAgo from "./TimeHelper";
 
+interface IRecentlyPlayedProps{
+  recentlyplayedData: Podcast[]
+}
 export default function RecentlyPlayed({
-  recentlyplayedData,
-}: {
-  recentlyplayedData: {};
-}) {
-  const renderRecentlyPlayedItem = ({
-    item,
-  }: {
-    item: {
-      id: string;
-      image: ImageSourcePropType;
-      title: string;
-      time: string;
-    };
-  }) => {
+  recentlyplayedData
+}: IRecentlyPlayedProps) {
+  
+  const renderRecentlyPlayedItem = ({ item }: { item: Podcast }) => {
     return (
       <View style={styles.mixcontainer}>
-        <Image source={item.image} style={styles.img} />
+        <Image source={{ uri: item.coverImageUrl }} style={styles.img} />
         <View style={styles.textBox}>
           <Text style={styles.title}>{item.title}</Text>
           <View style={styles.time}>
-            <EvilIcons
-              name="clock"
-              size={15}
-              color="white"
-              style={styles.clock}
-            />
-            <Text style={styles.imgtime}>{item.time}</Text>
+            <EvilIcons name="clock" size={15} color="white" style={styles.clock} />
+            <Text style={styles.imgtime}>{timeAgo(item.createdOn)}</Text>
           </View>
           {/* <Text style={styles.sub}>{time}</Text> */}
         </View>
@@ -47,7 +37,7 @@ export default function RecentlyPlayed({
           data={recentlyplayedData}
           renderItem={renderRecentlyPlayedItem}
           keyExtractor={(item) => item.id}
-          vertical={true}
+          // vertical={true}
         />
       </View>
     </View>
