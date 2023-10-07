@@ -6,8 +6,8 @@ import {
   Pressable,
   Text,
   SafeAreaView,
-  AsyncStorage,
 } from "react-native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AntDesign } from "@expo/vector-icons";
 import Font from "../constants/Font";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
@@ -51,9 +51,10 @@ export default function SignUp() {
       });
       let responseJson = await res.json();
       setUserInfo(responseJson);
+      const jsonValue = JSON.stringify(responseJson);
       await AsyncStorage.setItem(
         'USERINFO',
-        userInfo,
+        jsonValue,
       );
     } catch (error) {
       console.error("Error signing up:", error);
