@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import {TouchableOpacity } from "react-native";
+import React, { useState, useEffect } from "react";
+import {TouchableOpacity} from "react-native";
+import RNFS from "react-native-fs"
 import {
   View,
   TextInput,
@@ -7,26 +8,119 @@ import {
   Pressable,
   Text,
   SafeAreaView,
+  Alert
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import Font from "../constants/Font";
-import * as DocumentPicker from "expo-document-picker";
+import DocumentPicker from 'react-native-document-picker';
+import axios from "axios";
 
 export default function Upload() {
-  const [isFormComplete, setFormComplete] = useState(Array(5).fill(0))
-  const [selectedAudioFile, setSelectedAudioFile] = useState<DocumentPicker.DocumentPickerResult | null>(null);
-  const [selectedCover, setSelectedCover] = useState<DocumentPicker.DocumentPickerResult | null>(null);
+  const [audioData, setAudioData] = useState('');
+  const [imgData, setImageData] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const pickDocument = async () => {
+  const pickAudio = async () => {
     try {
-      const result = await DocumentPicker.getDocumentAsync();
-      if (result.type  === "success") {
-        setSelectedAudioFile(result);
-      }
+      const result = await DocumentPicker.pick({
+        type: [DocumentPicker.types.audio],
+      });
+
+      // Read the audio file
+      const audioFile = await RNFS.readFile(result.uri, 'base64');
+      setAudioData(audioFile);
     } catch (error) {
-      console.error("Error picking document:", error);
+      if (DocumentPicker.isCancel(error)) {
+        // User cancelled the picker
+      } else {
+        console.error('Error picking audio:', error);
+      }
     }
   };
+
+  const pickImage = async () => {
+    try {
+      const result = await DocumentPicker.pick({
+        type: [DocumentPicker.types.images],
+      });
+
+      // Read the audio file
+      const imgData = await RNFS.readFile(result.uri, 'base64');
+      setImageData(imgData);
+    } catch (error) {
+      if (DocumentPicker.isCancel(error)) {
+        // User cancelled the picker
+      } else {
+        console.error('Error picking audio:', error);
+      }
+    }
+  };
+
+  // const [isFormComplete, setFormComplete] = useState(false)
+  // const [selectedAudio, setSelectedAudioFile] = useState<DocumentPicker.DocumentPickerResult | null>(null);
+  // const [selectedCover, setSelectedCover] = useState<DocumentPicker.DocumentPickerResult | null>(null);
+
+    // State variables to store form inputs,  
+    // errors, and form validity 
+    // const [name, setName] = useState(''); 
+    // const [email, setEmail] = useState(''); 
+    // const [password, setPassword] = useState(''); 
+    // const [errors, setErrors] = useState({}); 
+    // const [isFormValid, setIsFormValid] = useState(false); 
+  
+    // useEffect(() => { 
+  
+    //     // Trigger form validation when name,  
+    //     // email, or password changes 
+    //     validateForm(); 
+    // }, [name, email, password]); 
+  
+    // const validateForm = () => { 
+    //     let errors = {}; 
+  
+    //     // Validate name field 
+    //     if (!name) { 
+    //         errors.name = 'Name is required.'; 
+    //     } 
+  
+    //     // Validate email field 
+    //     if (!email) { 
+    //         errors.email = 'Email is required.'; 
+    //     } else if (!/\S+@\S+\.\S+/.test(email)) { 
+    //         errors.email = 'Email is invalid.'; 
+    //     } 
+  
+    //     // Validate password field 
+    //     if (!password) { 
+    //         errors.password = 'Password is required.'; 
+    //     } else if (password.length < 6) { 
+    //         errors.password = 'Password must be at least 6 characters.'; 
+    //     } 
+  
+    //     // Set the errors and update form validity 
+    //     setErrors(errors); 
+    //     setIsFormValid(Object.keys(errors).length === 0); 
+    // }; 
+  
+    // const handleSubmit = () => { 
+    //     if (isFormValid) { 
+  
+    //         // Form is valid, perform the submission logic 
+    //         console.log('Form submitted successfully!'); 
+    //     } else { 
+              
+    //         // Form is invalid, display error messages 
+    //         console.log('Form has errors. Please correct them.'); 
+    //     } 
+    // }; 
+
+    // useEffect(() => {
+      
+    // }, [])
+
+  
 
   const handleUpload = () => {
 
@@ -48,12 +142,12 @@ export default function Upload() {
         alignSelf: "center",
       }}
       />
-      <InputField place_holder="Title" secure={false} />
-      <InputField place_holder="Description" secure={false} />
-      <InputField place_holder="Language" secure={false} />
+      <InputField place_holder="UserName" secure={false} />
+      <InputField place_holder="Email" secure={false} />
+      <InputField place_holder="Password" secure={true} />
         <TouchableOpacity
           style={styles.button}
-          onPress={pickDocument}
+          onPress={pickAudio}
         >
           <Text>Select audio</Text>
         </TouchableOpacity>
@@ -62,11 +156,25 @@ export default function Upload() {
 
         <TouchableOpacity
           style={styles.button}
-          onPress={pickDocument}
+          onPress={picCover}
         >
           <Text>Select cover</Text>
         </TouchableOpacity>
       </View>
+      <View
+      style={{
+        borderBottomColor: 'white',
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        width: 390,
+        alignSelf: "center",
+      }}
+      />
+      <TouchableOpacity
+          style={styles.button}
+          onPress={handleUpload}
+        >
+          <Text>Upload</Text>
+        </TouchableOpacity>
     </SafeAreaView>
     );
 }
@@ -82,6 +190,7 @@ function InputField({ place_holder, secure }: InputFieldProps) {
         placeholder={place_holder}
         style={styles.input}
         secureTextEntry={secure}
+        placeholderTextColor="white"
         multiline
       />
     </View>
@@ -128,4 +237,9 @@ const styles = StyleSheet.create({
     width: 600,
     lineHeight: 2,
   },
+  error: { 
+    color: 'red', 
+    fontSize: 20, 
+    marginBottom: 12, 
+}, 
 });
