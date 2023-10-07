@@ -1,7 +1,8 @@
-import { StyleSheet, Image, ImageBackground } from "react-native";
+import { StyleSheet, Image, ImageBackground, Pressable } from "react-native";
 import { Text, View } from "./Themed";
 import { ImageSourcePropType } from "react-native";
 import { EvilIcons } from "@expo/vector-icons";
+import { Link, router } from "expo-router";
 
 export function MainScreenPlayer({
   albumArt,
@@ -13,26 +14,30 @@ export function MainScreenPlayer({
   time: string;
 }) {
   return (
-    <View style={styles.mainScreencontainer}>
-      <ImageBackground
-        source={albumArt}
-        style={styles.backgroundImage}
-        borderRadius={15}
-      >
-        <View style={styles.imagetxt}>
-          <Text style={styles.imgtitle}>{title}</Text>
-          <View style={styles.time}>
-            <EvilIcons
-              name="clock"
-              size={15}
-              color="white"
-              style={styles.clock}
-            />
-            <Text style={styles.imgtime}>{time}</Text>
-          </View>
-        </View>
-      </ImageBackground>
-    </View>
+    <Pressable>
+      <View style={styles.mainScreencontainer}>
+        <Link href="/podcast/f76db82c-6ba6-43e9-9b5f-a983604f12b9/">
+          <ImageBackground
+            source={albumArt}
+            style={styles.backgroundImage}
+            borderRadius={15}
+          >
+            <View style={styles.imagetxt}>
+              <Text style={styles.imgtitle}>{title}</Text>
+              <View style={styles.time}>
+                <EvilIcons
+                  name="clock"
+                  size={15}
+                  color="white"
+                  style={styles.clock}
+                />
+                <Text style={styles.imgtime}>{time}</Text>
+              </View>
+            </View>
+          </ImageBackground>
+        </Link>
+      </View>
+    </Pressable>
   );
 }
 

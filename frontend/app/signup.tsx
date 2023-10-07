@@ -14,7 +14,9 @@ import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import axios from "axios";
 
 const JWT_URL = "/api/login/google";
-const API_END = "http://nativetunes.azurewebsites.net/api/auth/register";
+const API_END = "https://nativetunes.azurewebsites.net/api/auth/register";
+const API_END2 = "https://nativetunes.azurewebsites.net/api/auth/login";
+
 
 export default function SignUp() {
   // const [password, setPassword] = useState('');
@@ -57,6 +59,16 @@ export default function SignUp() {
       console.error("Error signing up:", error);
     }
   };
+  const handleLogin = async () => {
+    try{
+      const data = {email: email, password: password};
+      let res = await axios.post(API_END2, data);
+      console.log(res);
+
+    } catch (error) {
+      console.error("Error signing up:", error);
+    }
+  }
   async function sendToBackend({ id_token }: { id_token: string }) {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", JWT_URL);
@@ -91,18 +103,6 @@ export default function SignUp() {
     <SafeAreaView style={styles.container}>
       <TextInput
         style={styles.input}
-        placeholder="First Name"
-        value={firstName}
-        onChangeText={setFirstName}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Last Name"
-        value={lastName}
-        onChangeText={setLastName}
-      />
-      <TextInput
-        style={styles.input}
         placeholder="Email Address"
         value={email}
         onChangeText={setEmail}
@@ -117,10 +117,10 @@ export default function SignUp() {
       <Pressable
         style={styles.button}
         onPress={() => {
-          handleSignUp();
+          handleLogin();
         }}
       >
-        <Text>Sign Up</Text>
+        <Text>Login</Text>
       </Pressable>
       <Text numberOfLines={1} />
       <Pressable

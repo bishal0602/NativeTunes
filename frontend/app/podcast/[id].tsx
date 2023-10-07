@@ -12,7 +12,7 @@ import {
 import { useEffect, useState } from "react";
 
 import { useLocalSearchParams } from "expo-router";
-import { Podcast, fetchPodcastbyId } from "../../(tabs)/ApiService";
+import { Podcast, fetchPodcastbyId } from "../(tabs)/ApiService";
 
 const Dev_Height = Dimensions.get("window").height;
 const Dev_Width = Dimensions.get("window").width;
@@ -51,14 +51,14 @@ export default function PodcastPage() {
 
       <View style={styles.music_logo_view}>
         <Image
-          source={require("../../../assets/logo.jpg")}
+          source={require("../../assets/logo.jpg")}
           style={styles.image_view}
         />
       </View>
 
       <View style={styles.name_of_song_View}>
-        <Text style={styles.name_of_song_Text1}>{podcast.title}</Text>
-        <Text style={styles.name_of_song_Text2}>{podcast.description}</Text>
+        <Text style={styles.name_of_song_Text1}>{podcast?.title}</Text>
+        <Text style={styles.name_of_song_Text2}>{podcast?.description}</Text>
       </View>
 
       <View style={styles.slider_view}>
@@ -112,7 +112,7 @@ export default function PodcastPage() {
         <Text style={styles.recently_played_text}> Recently Played </Text>
         <View style={styles.recently_played_list}>
           <Image
-            source={require("../../../assets/logo.jpg")}
+            source={require("../../assets/logo.jpg")}
             style={styles.recently_played_image}
           />
           <View style={styles.recently_played_list_text}>
