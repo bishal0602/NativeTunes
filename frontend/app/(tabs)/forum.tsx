@@ -15,7 +15,7 @@ import { Text, View } from "../../components/Themed";
 
 export default function ForumScreen() {
   const [task, setTask] = useState();
-  const [taskItems, setTaskItems] = useState([]);
+  const [taskItems, setTaskItems] = useState(['Is there any book related to Ranjana Lipi for enthusiasts?']);
 
   const handleAddTask = () => {
     Keyboard.dismiss();

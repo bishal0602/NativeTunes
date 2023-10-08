@@ -223,7 +223,7 @@ const AudioPlayer: React.FC<{ podcast: Podcast|undefined }> = ({podcast}) => {
 
 export default function PodcastPage() {
   // const { id } = useLocalSearchParams();
-  const id = '0695f760-3538-46d9-a8a6-29a2ef8016e7';
+  const id = '5c81d088-0841-43b3-9766-bdfd86aef105';
 
   const [podcast, setPodcast] = useState<Podcast>();
 
