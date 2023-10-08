@@ -26,7 +26,10 @@ export default function RecentlyPlayed({
           <Text style={styles.title}>{item.title}</Text>
           <View style={styles.time}>
             <EvilIcons name="clock" size={15} color="white" style={styles.clock} />
-            <Text style={styles.imgtime}>{timeAgo(item.createdOn)}</Text>
+            <Text style={styles.imgtime}>{timeAgo(item.createdOn)} </Text>
+            <EvilIcons name="heart" size={15} color="white" style={styles.clock} />
+            <Text>{item.language} </Text>
+
           </View>
           {/* <Text style={styles.sub}>{time}</Text> */}
         </View>

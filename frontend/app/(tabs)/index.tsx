@@ -37,7 +37,7 @@ export default function TabOneScreen() {
         <MainScreenPlayer
           title="Life As A Newar"
           albumArt={image1Source}
-          time="15 mins of listening"
+          time="15 mins of listening (Newari)"
         ></MainScreenPlayer>
         <RecentlyPlayed
           recentlyplayedData={getRandomPodcasts(podcasts)}
