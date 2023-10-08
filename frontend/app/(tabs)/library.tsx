@@ -12,8 +12,8 @@ export default function LibraryScreen() {
 const articles = [
   {
     id: 'djfldlasf',
-    title: 'Its a long title',
-    description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum',
+    title: 'The last of the Kusunda',
+    description: 'The Kusunda are one of the two last remaining hunter-gatherer societies left in Nepal, the other being the nomadic Raute. The 2011 Census showed that there were only 273 Kusunda individuals remaining, and there are probably even fewer today.     The Kusunda language is not related to any other language group in South Asia, and has only one native speaker still alive: Kamala Khatri Sen in Dang district. Decades of social exclusion has nearly obliterated this ethnic group. One of the earliest mentions of Kusunda comes from Brian Houghton Hodgson, the British Resident to Nepal in 1833, who extensively documented Nepal\'s human and natural diversity. \'Amid the dense forests of the central region of Nepal, to the westward of the great valley, dwell, in scanty numbers and nearly in a state of nature, two broken tribes having no apparent affinity with the civilized races of the country, and seeming like the fragments of an earlier population,’ Hodgson wrote of the Kusunda and Chepang.',
     likes: 89,
     createdOn: new Date("2023-10-06T14:44:04.7655807"),
     createdBy: {
@@ -22,8 +22,8 @@ const articles = [
   },
     {
       id: 'Very very long title',
-      title: 'Title',
-      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum',
+      title: 'Preserve Mother Tongues',
+      description: 'Lingua franca refers to a common language between speakers whose mother tongues  are different. In Nepali,  it is also known as \'Samparka Bhasha\'. In the context of Nepal, Nepali is spoken as the main lingua franca in most parts of the country. Going back to history, Nepali became the national language of Nepal after a royal proclamation by late king Mahendra referring to a slogan of \'One nation, One language\'.Nepali language belongs to one of the biggest language family. Nepali is an Indo-Iranian (Indic) language. Sanskrit is known as the root  of Nepali language but  the Sanskrit language is now considered  a dead language.  We don\'t hear anybody communicating in Sanskrit. Religious texts  like Vedas and Tripitaka  which used to be written in native  Sanskrit and Pali respectively are now translated into Nepali. In the current period,  textbooks are only available in Nepali or English. \ Nepali language serves  as an official language in education, administration, media, publication and governmental offices. Article 7 of the constitution has recognised Nepali as the coutnry\'s official language. According to the first census of Nepal which was held in 1959, 44 mother tongues were recorded but 2011 census recoded 123 languages. Around 129 languages are spoken in Nepal. Among them, many  languages and dialects are on the verge of disappearing due to having only few speakers left. Nepali being  a lingua franca, indigenous languages like Rana Tharu, Dura, Kusunda, Yamphu and Tillung and many other languages like them are on the verge of extinction. ',
       likes: 89,
       createdOn: new Date("2023-10-06T14:44:04.7655807"),
       createdBy: {

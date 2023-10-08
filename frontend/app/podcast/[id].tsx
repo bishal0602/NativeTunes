@@ -64,7 +64,7 @@ const AudioPlayer: React.FC<{ podcast: Podcast|undefined }> = ({podcast}) => {
     const timer = setInterval(() => {
       // Increment the slider value (or adjust as needed)
       setSliderValue((prevValue) => {
-        const newValue = prevValue + 0.1;
+        const newValue = prevValue + 0.05;
         return newValue <= maxSliderValue ? newValue : 0;
       });
     }, timeInterval);
@@ -74,8 +74,8 @@ const AudioPlayer: React.FC<{ podcast: Podcast|undefined }> = ({podcast}) => {
     return () => {
       // if(sliderValue >= maxSliderValue) setSliderValue(0);
       if (sound) {
+        sound.stopAsync();
         sound.unloadAsync();
-        setSound(null);
       }
     };
   }, [podcast.podcastUrl]);

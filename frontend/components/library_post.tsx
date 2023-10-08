@@ -63,7 +63,7 @@ export default function TextPost({ data }: ArticleProp) {
           style={styles.avatar}
           source={{ uri: "https://www.computerhope.com/jargon/g/guest-user.png"}}
         />
-        <Text style={styles.username}>random usser</Text>
+        <Text style={styles.username}>Anonymous</Text>
       </View>
         <Entypo
           style={{
