@@ -3,9 +3,14 @@
 
 <br>
 
-A comprehensive solution for farmers and people who want to grow on land, which aims to empower farmers by educating them & helping them make imformed decisions that increases their income.
+Introducing "Native Tunes" a revolutionary storytelling platform app designed to preserve indigenous languages and cultures through audio storytelling. Creators can easily upload their stories in audio format, ensuring the oral traditions and unique linguistic nuances of their indigenous communities are safeguarded for future generations.
 
-Agrify aims to act as a brigde between agriculture and technology. Our aim is to make farming not seen as an option of last resort, but rather a vacation of choice.
+The app goes beyond storytelling; it features an integrated marketplace where users can sell artifacts from their cultures, promoting economic empowerment and sustainable preservation. This marketplace serves as a hub for users to showcase and celebrate their heritage, offering a diverse range of cultural artifacts for enthusiasts to discover and purchase.
+
+To foster community engagement and creative discussions, NativeTunes provides a dedicated forum where users can interact, exchange ideas, and explore various storytelling techniques. This space encourages collaboration, enabling individuals to connect with fellow enthusiasts, learn from one another, and enhance their storytelling skills while fostering a deeper appreciation for indigenous languages and cultures.
+
+Nativetunes is more than a platform; it's a movement that empowers indigenous communities to share their rich heritage, embrace their unique identities, and contribute to the global tapestry of cultural diversity. Join us in preserving the heartbeat of indigenous languages and cultures, one story at a time.
+
 
 ## Contributors 👨‍💻
 ```
