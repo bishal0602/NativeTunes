@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Audio } from "expo-av";
 
 import {
   Text,
@@ -7,6 +8,7 @@ import {
   SafeAreaView,
   Image,
   Dimensions,
+  Button
 } from "react-native";
 
 import { useEffect, useState } from "react";
@@ -21,48 +23,111 @@ import { AntDesign, Entypo, Feather } from "@expo/vector-icons";
 import Slider from "@react-native-community/slider";
 import ProgressCircle from "react-native-progress-circle";
 
-export default function PodcastPage() {
-  const { id } = useLocalSearchParams();
+// const fetchAudio = async (audioUrl) => {
+//   try {
+//     const response = await fetch(audioUrl);
+//     if (!response.ok) {
+//       throw new Error('Network response was not ok');
+//     }
 
-  const [podcast, setPodcast] = useState<Podcast>();
+//     const audioBlob = await response.blob();
+//     return audioBlob;
+//   } catch (error) {
+//     console.error('Error fetching audio:', error);
+//     throw error;
+//   }
+// }
+
+
+
+const AudioPlayer: React.FC<{ podcast: Podcast|undefined }> = ({podcast}) => {
+  
+  if(!podcast){
+    return <></>
+  }
+  const [sound, setSound] = useState<Audio.Sound | null>(null);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [sliderValue, setSliderValue] = useState(0);
+  const maxSliderValue = 100; 
+  const timeInterval = 1000;
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const podcast = await fetchPodcastbyId({ id: id as string });
-        setPodcast(podcast);
-      } catch (error) {
-        console.error("Error fetching data:", error);
+    const loadAudio = async () => {
+      const { sound } = await Audio.Sound.createAsync(
+        { uri: podcast.podcastUrl }
+      );
+      setSound(sound);
+      // const status = await sound.getStatusAsync();
+      
+    };
+
+    const timer = setInterval(() => {
+      // Increment the slider value (or adjust as needed)
+      setSliderValue((prevValue) => {
+        const newValue = prevValue + 0.1;
+        return newValue <= maxSliderValue ? newValue : 0;
+      });
+    }, timeInterval);
+
+    loadAudio();
+
+    return () => {
+      // if(sliderValue >= maxSliderValue) setSliderValue(0);
+      if (sound) {
+        sound.unloadAsync();
+        setSound(null);
       }
     };
-    fetchData();
-  });
-  return (
-    <SafeAreaView style={styles.contanier}>
-      <View style={styles.mainbar}>
-        <AntDesign name="left" size={24} style={{ marginLeft: "5%" }} />
-        <Text style={styles.now_playing_text}> Now Playing </Text>
-        <Entypo
-          name="dots-three-horizontal"
-          size={24}
-          style={{ marginLeft: "20%" }}
-        />
-      </View>
+  }, [podcast.podcastUrl]);
 
-      <View style={styles.music_logo_view}>
-        <Image
-          source={require("../../assets/logo.jpg")}
-          style={styles.image_view}
-        />
-      </View>
+  const playAudio = async () => {
+    console.log("dkjalalksfdaklklafsaf")
+    if (sound) {
+      if (isPlaying) {
+        await sound.pauseAsync();
+      } else {
+        await sound.playAsync();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
 
-      <View style={styles.name_of_song_View}>
-        <Text style={styles.name_of_song_Text1}>{podcast?.title}</Text>
-        <Text style={styles.name_of_song_Text2}>{podcast?.description}</Text>
-      </View>
+  const stopAudio = async () => {
+    if (sound) {
+      await sound.stopAsync();
+      setIsPlaying(false);
+    }
+  };
 
-      <View style={styles.slider_view}>
-        <Text style={styles.slider_time}> 4:10 </Text>
+  return(<SafeAreaView style={styles.contanier}>
+    {/* <AudioPlayer audioUrl={} */}
+  
+    <View style={styles.mainbar}>
+      <AntDesign name="left" size={24} style={{ marginLeft: "5%" }} onPress={stopAudio} />
+      <Text style={styles.now_playing_text}> Now Playing </Text>
+      <Entypo
+        name="dots-three-horizontal"
+        size={24}
+        style={{ marginLeft: "20%" }}
+      />
+    </View>
+
+    <View style={styles.music_logo_view}>
+      <Image
+        source={{uri: podcast?.coverImageUrl}}
+        style={styles.image_view}
+      />
+    </View>
+    <Text style={{
+      color: 'white',
+      fontSize:20,
+      fontWeight:'400',
+      alignSelf:'center'
+    }}>{podcast?.title}</Text>
+
+    <View style={{height:500, marginTop:150}}>
+        <View style={styles.slider_view}>
+        <Text style={styles.slider_time}> 00:00 </Text>
         <Slider
           style={styles.slider_style}
           minimumValue={0}
@@ -70,7 +135,8 @@ export default function PodcastPage() {
           minimumTrackTintColor="#e75480"
           maximumTrackTintColor="#d3d3d3"
           thumbTintColor="#e75480"
-          value={3.5}
+          value={sliderValue}
+          onValueChange={(newValue) => setSliderValue(newValue)}
         />
         <Text style={styles.slider_time}>12:02</Text>
       </View>
@@ -93,6 +159,7 @@ export default function PodcastPage() {
           size={50}
           color="#e75480"
           style={{ marginLeft: "12%" }}
+          onPress={playAudio}
         />
         <Entypo
           name="controller-fast-forward"
@@ -107,44 +174,73 @@ export default function PodcastPage() {
           style={{ marginLeft: "10%" }}
         />
       </View>
+      </View>
 
-      <View style={styles.recently_played_view}>
-        <Text style={styles.recently_played_text}> Recently Played </Text>
-        <View style={styles.recently_played_list}>
-          <Image
-            source={require("../../assets/logo.jpg")}
-            style={styles.recently_played_image}
-          />
-          <View style={styles.recently_played_list_text}>
-            <Text style={styles.recently_played_list_text1}>
-              {" "}
-              #01 - Start With SEO{" "}
-            </Text>
-            <Text style={styles.recently_played_list_text2}>
-              {" "}
-              By Setup Cast - 15: 35{" "}
-            </Text>
-          </View>
-          <View>
-            <ProgressCircle
-              percent={40}
-              radius={25}
-              borderWidth={5}
+    <View style={styles.name_of_song_View}>
+      <Text style={styles.name_of_song_Text1}>{podcast?.title}</Text>
+      <Text style={styles.name_of_song_Text2}>{podcast?.description}</Text>
+    </View>
+
+    <View style={styles.recently_played_view}>
+      <Text style={styles.recently_played_text}> Recently Played </Text>
+      <View style={styles.recently_played_list}>
+        <Image
+          source={require("../../assets/logo.jpg")}
+          style={styles.recently_played_image}
+        />
+        <View style={styles.recently_played_list_text}>
+          <Text style={styles.recently_played_list_text1}>
+            {" "}
+            #01 - Start With SEO{" "}
+          </Text>
+          <Text style={styles.recently_played_list_text2}>
+            {" "}
+            By Setup Cast - 15: 35{" "}
+          </Text>
+        </View>
+        <View>
+          <ProgressCircle
+            percent={40}
+            radius={25}
+            borderWidth={5}
+            color="#e75480"
+            shadowColor="#FFF"
+            bgColor="#fff"
+          >
+            <AntDesign
+              name="play"
+              size={37}
               color="#e75480"
-              shadowColor="#FFF"
-              bgColor="#fff"
-            >
-              <AntDesign
-                name="play"
-                size={37}
-                color="#e75480"
-                style={{ marginTop: "4%" }}
-              />
-            </ProgressCircle>
-          </View>
+              style={{ marginTop: "4%" }}
+            />
+          </ProgressCircle>
         </View>
       </View>
-    </SafeAreaView>
+    </View>
+  </SafeAreaView>
+  );    
+};
+
+export default function PodcastPage() {
+  // const { id } = useLocalSearchParams();
+  const id = '0695f760-3538-46d9-a8a6-29a2ef8016e7';
+
+  const [podcast, setPodcast] = useState<Podcast>();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const podcast = await fetchPodcastbyId({ id: id as string });
+        setPodcast(podcast);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  });
+
+  return (
+    <AudioPlayer podcast={podcast} />
   );
 }
 
@@ -162,12 +258,15 @@ const styles = StyleSheet.create({
   now_playing_text: {
     fontSize: 19,
     marginLeft: "24%",
+    color: 'white',
   },
   music_logo_view: {
     height: "30%",
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
+    marginTop:50,
+    marginBottom: 30
   },
   image_view: {
     height: "100%",

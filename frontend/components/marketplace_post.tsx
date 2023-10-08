@@ -59,21 +59,24 @@ export default function Post({ data }: PostProp) {
           {likes}
         </Text>
 
+
+
         <Pressable
           style={{
-            backgroundColor: '#ED6A5A',
+            backgroundColor: '#231942',
             alignItems: 'center',
-            width: 50,
+            width: 150,
             borderRadius: 5,
             padding: 5,
-            marginLeft: 312,
+            marginLeft: 210,
             marginTop: 2,
             cursor: 'pointer',
           }}
         >
           <Text style={{
             color: 'white',
-          }}>Buy</Text>
+            // width: 200,
+          }}>{`Rs.${data.price} Buy`}</Text>
         </Pressable>
       </View>
 
@@ -81,7 +84,7 @@ export default function Post({ data }: PostProp) {
 
       <Text
         style={{
-          width: 300,
+          width: 400,
           paddingLeft: 10,
           paddingRight: 10,
         }}
@@ -124,5 +127,6 @@ const styles = StyleSheet.create({
   caption: {
     padding: 10,
     fontWeight: "bold",
+    fontSize: 20,
   },
 });

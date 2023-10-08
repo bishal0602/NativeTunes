@@ -1,9 +1,11 @@
-import { StyleSheet, Image, ImageBackground, FlatList } from "react-native";
+import { StyleSheet, Image, ImageBackground, FlatList, Pressable } from "react-native";
 import { Text, View } from "./Themed";
 import { ImageSourcePropType } from "react-native";
 import { EvilIcons } from "@expo/vector-icons";
 import { Podcast } from "../app/(tabs)/ApiService";
 import timeAgo from "./TimeHelper";
+import PodcastPage from "../app/podcast/[id]";
+import router from "expo-router";
 
 interface IRecentlyPlayedProps{
   recentlyplayedData: Podcast[]
@@ -13,7 +15,11 @@ export default function RecentlyPlayed({
 }: IRecentlyPlayedProps) {
   
   const renderRecentlyPlayedItem = ({ item }: { item: Podcast }) => {
+    const handleClick = () => {
+      
+    }
     return (
+      <Pressable onPress={handleClick}>
       <View style={styles.mixcontainer}>
         <Image source={{ uri: item.coverImageUrl }} style={styles.img} />
         <View style={styles.textBox}>
@@ -25,6 +31,7 @@ export default function RecentlyPlayed({
           {/* <Text style={styles.sub}>{time}</Text> */}
         </View>
       </View>
+      </Pressable>
     );
   };
 

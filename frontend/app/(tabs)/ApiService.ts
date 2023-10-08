@@ -5,7 +5,7 @@ const BASE_URL = "https://nativetunes.azurewebsites.net/api";
 export interface Product {
   id: string;
   title: string;
-  description: string;
+  description?: string;
   price: number;
   likes: number;
   imageUrl: string;
@@ -16,7 +16,7 @@ export interface Product {
 export interface Article {
   id: string;
   title: string;
-  description: string;
+  description?: string;
   likes: number;
   createdOn: Date;
   createdBy?: User;
@@ -35,7 +35,7 @@ export interface Podcast {
   language: string;
   coverImageUrl: string;
   podcastUrl: string;
-  createdOn: string;
+  createdOn: Date;
   createdBy?:User ;
 }
 

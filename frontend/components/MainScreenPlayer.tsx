@@ -16,12 +16,15 @@ export function MainScreenPlayer({
   return (
     <Pressable>
       <View style={styles.mainScreencontainer}>
-        <Link href="/podcast/f76db82c-6ba6-43e9-9b5f-a983604f12b9/">
           <ImageBackground
             source={albumArt}
             style={styles.backgroundImage}
             borderRadius={15}
           >
+        <Link style={{
+          width:'100%',
+          height:'100%',
+        }} href="/podcast/f76db82c-6ba6-43e9-9b5f-a983604f12b9/">
             <View style={styles.imagetxt}>
               <Text style={styles.imgtitle}>{title}</Text>
               <View style={styles.time}>
@@ -34,8 +37,8 @@ export function MainScreenPlayer({
                 <Text style={styles.imgtime}>{time}</Text>
               </View>
             </View>
-          </ImageBackground>
         </Link>
+          </ImageBackground>
       </View>
     </Pressable>
   );
